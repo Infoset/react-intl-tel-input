@@ -99,10 +99,10 @@ class IntlTelInput extends Component {
     this.processCountryData.call(this)
     this.tempCountry = this.getTempCountry(this.props.defaultCountry)
 
-    if (document.readyState === 'complete') {
+    if (this.props.document.readyState === 'complete') {
       this.windowLoaded = true
     } else {
-      window.addEventListener('load', () => {
+      this.props.window.addEventListener('load', () => {
         this.windowLoaded = true
       })
     }
@@ -121,15 +121,15 @@ class IntlTelInput extends Component {
       this.setInitialState()
     })
 
-    document.addEventListener('keydown', this.handleDocumentKeyDown)
+    this.props.document.addEventListener('keydown', this.handleDocumentKeyDown)
   }
 
   shouldComponentUpdate(nextProps, nextState) {
     if (nextState.showDropdown) {
-      document.addEventListener('keydown', this.handleDocumentKeyDown)
+      this.props.document.addEventListener('keydown', this.handleDocumentKeyDown)
       this.bindDocumentClick()
     } else {
-      document.removeEventListener('keydown', this.handleDocumentKeyDown)
+      this.props.document.removeEventListener('keydown', this.handleDocumentKeyDown)
       this.unbindDocumentClick()
     }
 
@@ -158,8 +158,8 @@ class IntlTelInput extends Component {
   }
 
   componentWillUnmount() {
-    document.removeEventListener('keydown', this.handleDocumentKeyDown)
-    window.removeEventListener('scroll', this.handleWindowScroll)
+    this.props.document.removeEventListener('keydown', this.handleDocumentKeyDown)
+    this.props.window.removeEventListener('scroll', this.handleWindowScroll)
     this.unbindDocumentClick()
   }
 
@@ -318,10 +318,13 @@ class IntlTelInput extends Component {
     )
   }
 
+  getIntlTelInputUtils = () => this.props.window.intlTelInputUtils || window.intlTelInputUtils;
+
   // get the extension from the current number
   getExtension = number => {
-    if (window.intlTelInputUtils) {
-      return window.intlTelInputUtils.getExtension(
+    const intlTelInputUtils = this.getIntlTelInputUtils();
+    if (intlTelInputUtils) {
+      return intlTelInputUtils.getExtension(
         this.getFullNumber(number),
         this.selectedCountryData.iso2,
       )
@@ -332,8 +335,9 @@ class IntlTelInput extends Component {
 
   // format the number to the given format
   getNumber = (number, format) => {
-    if (window.intlTelInputUtils) {
-      return window.intlTelInputUtils.formatNumber(
+    const intlTelInputUtils = this.getIntlTelInputUtils();
+    if (intlTelInputUtils) {
+      return intlTelInputUtils.formatNumber(
         this.getFullNumber(number),
         this.selectedCountryData.iso2,
         format,
@@ -522,10 +526,13 @@ class IntlTelInput extends Component {
     }
   }
 
+  getStorage = () => this.props.window.localStorage || window.localStorage;
+
   loadCountryFromLocalStorage = () => {
+    const localStorage = this.getStorage();
     try {
-      return window.localStorage !== undefined
-        ? window.localStorage.getItem('itiAutoCountry')
+      return localStorage != null
+        ? localStorage.getItem('itiAutoCountry')
         : ''
     } catch (e) {
       return ''
@@ -552,8 +559,8 @@ class IntlTelInput extends Component {
       if (typeof this.props.geoIpLookup === 'function') {
         this.props.geoIpLookup(countryCode => {
           this.autoCountry = countryCode.toLowerCase()
-          if (window.localStorage !== undefined) {
-            window.localStorage.setItem('itiAutoCountry', this.autoCountry)
+          if (this.getStorage() != null) {
+            this.getStorage().setItem('itiAutoCountry', this.autoCountry)
           }
           // tell all instances the auto country is ready
           // TODO: this should just be the current instances
@@ -661,8 +668,9 @@ class IntlTelInput extends Component {
   }
 
   formatNumber = number => {
-    if (window.intlTelInputUtils && this.selectedCountryData) {
-      let format = window.intlTelInputUtils.numberFormat.INTERNATIONAL
+    const intlTelInputUtils = this.getIntlTelInputUtils();
+    if (intlTelInputUtils && this.selectedCountryData) {
+      let format = intlTelInputUtils.numberFormat.INTERNATIONAL
 
       if (
         /* eslint-disable no-mixed-operators */
@@ -670,10 +678,10 @@ class IntlTelInput extends Component {
         number.charAt(0) !== '+'
         /* eslint-enable no-mixed-operators */
       ) {
-        format = window.intlTelInputUtils.numberFormat.NATIONAL
+        format = intlTelInputUtils.numberFormat.NATIONAL
       }
 
-      number = window.intlTelInputUtils.formatNumber(
+      number = intlTelInputUtils.formatNumber(
         number,
         this.selectedCountryData.iso2,
         format,
@@ -687,14 +695,15 @@ class IntlTelInput extends Component {
   // if doNotify is true, calls notifyPhoneNumberChange with the formatted value
   // NOTE: this is called from _setInitialState, handleUtils and setNumber
   updateValFromNumber = (number, doFormat, doNotify = false) => {
-    if (doFormat && window.intlTelInputUtils && this.selectedCountryData) {
+    const intlTelInputUtils = this.getIntlTelInputUtils();
+    if (doFormat && intlTelInputUtils && this.selectedCountryData) {
       const format =
         !this.props.separateDialCode &&
         (this.nationalMode || number.charAt(0) !== '+')
-          ? window.intlTelInputUtils.numberFormat.NATIONAL
-          : window.intlTelInputUtils.numberFormat.INTERNATIONAL
+          ? intlTelInputUtils.numberFormat.NATIONAL
+          : intlTelInputUtils.numberFormat.INTERNATIONAL
 
-      number = window.intlTelInputUtils.formatNumber(
+      number = intlTelInputUtils.formatNumber(
         number,
         this.selectedCountryData.iso2,
         format,
@@ -849,13 +858,13 @@ class IntlTelInput extends Component {
 
   bindDocumentClick = () => {
     this.isOpening = true
-    document
+    this.props.document
       .querySelector('html')
       .addEventListener('click', this.handleDocumentClick)
   }
 
   unbindDocumentClick = () => {
-    document
+    this.props.document
       .querySelector('html')
       .removeEventListener('click', this.handleDocumentClick)
   }
@@ -892,14 +901,15 @@ class IntlTelInput extends Component {
   // update the input placeholder to an
   // example number from the currently selected country
   updatePlaceholder = (props = this.props) => {
+    const intlTelInputUtils = this.getIntlTelInputUtils();
     if (
-      window.intlTelInputUtils &&
+      intlTelInputUtils &&
       props.autoPlaceholder &&
       this.selectedCountryData
     ) {
-      const numberType = window.intlTelInputUtils.numberType[props.numberType]
+      const numberType = intlTelInputUtils.numberType[props.numberType]
       let placeholder = this.selectedCountryData.iso2
-        ? window.intlTelInputUtils.getExampleNumber(
+        ? intlTelInputUtils.getExampleNumber(
             this.selectedCountryData.iso2,
             this.nationalMode,
             numberType,
@@ -939,7 +949,7 @@ class IntlTelInput extends Component {
     try {
       const container = this.flagDropDown.querySelector('.country-list')
       const containerHeight = parseFloat(
-        window.getComputedStyle(container).getPropertyValue('height'),
+        this.props.window.getComputedStyle(container).getPropertyValue('height')
       )
       const containerTop = utils.offset(container).top
       const containerBottom = containerTop + containerHeight
@@ -1018,10 +1028,10 @@ class IntlTelInput extends Component {
     this.wrapperClass['separate-dial-code'] = this.props.separateDialCode
 
     if (this.isMobile && this.props.useMobileFullscreenDropdown) {
-      document.querySelector('body').classList.add('iti-mobile')
+      this.props.document.querySelector('body').classList.add('iti-mobile')
       // on mobile, we want a full screen dropdown, so we must append it to the body
       this.dropdownContainer = 'body'
-      window.addEventListener('scroll', this.handleWindowScroll)
+      this.props.window.addEventListener('scroll', this.handleWindowScroll)
     }
   }
 
@@ -1056,18 +1066,20 @@ class IntlTelInput extends Component {
         ? this.selectedCountryData.iso2
         : ''
 
-    if (window.intlTelInputUtils) {
-      return window.intlTelInputUtils.isValidNumber(val, countryCode)
+    const intlTelInputUtils = this.getIntlTelInputUtils();
+    if (intlTelInputUtils) {
+      return intlTelInputUtils.isValidNumber(val, countryCode)
     }
 
     return false
   }
 
   formatFullNumber = number => {
-    return window.intlTelInputUtils
+    const intlTelInputUtils = this.getIntlTelInputUtils();
+    return intlTelInputUtils
       ? this.getNumber(
           number,
-          window.intlTelInputUtils.numberFormat.INTERNATIONAL,
+          intlTelInputUtils.numberFormat.INTERNATIONAL
         )
       : number
   }
@@ -1124,8 +1136,8 @@ class IntlTelInput extends Component {
         showDropdown: false,
       },
       () => {
-        window.removeEventListener('scroll', this.handleWindowScroll)
-      },
+        this.props.window.removeEventListener('scroll', this.handleWindowScroll)
+      }
     )
   }
 
@@ -1249,7 +1261,7 @@ class IntlTelInput extends Component {
   }
 
   loadUtils = () => {
-    if (window.intlTelInputUtils) {
+    if (this.getIntlTelInputUtils()) {
       this.utilsScriptDeferred.resolve()
     }
   }
@@ -1302,6 +1314,8 @@ class IntlTelInput extends Component {
           preferredCountries={this.preferredCountries}
           highlightedCountry={this.state.highlightedCountry}
           titleTip={titleTip}
+          window={this.props.window}
+          document={this.props.document}
         />
         <TelInput
           refCallback={this.setTelRef}
@@ -1459,6 +1473,8 @@ IntlTelInput.defaultProps = {
   // always format the number
   format: false,
   onFlagClick: null,
+  window: window,
+  document: document,
 }
 
 export default IntlTelInput

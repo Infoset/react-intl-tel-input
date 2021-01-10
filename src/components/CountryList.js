@@ -16,6 +16,8 @@ export default class CountryList extends Component {
     changeHighlightCountry: PropTypes.func,
     showDropdown: PropTypes.bool,
     isMobile: PropTypes.bool,
+    window: PropTypes.object.isRequired,
+    document: PropTypes.object.isRequired,
   }
 
   shouldComponentUpdate(nextProps) {
@@ -33,17 +35,17 @@ export default class CountryList extends Component {
     this.listElement.classList.remove('hide')
     const inputTop = this.props.inputTop
     const windowTop =
-      window.pageYOffset !== undefined
-        ? window.pageYOffset
+      this.props.window.pageYOffset !== undefined
+        ? this.props.window.pageYOffset
         : (
-            document.documentElement ||
-            document.body.parentNode ||
-            document.body
+            this.props.document.documentElement ||
+            this.props.document.body.parentNode ||
+            this.props.document.body
           ).scrollTop
     const windowHeight =
-      window.innerHeight ||
-      document.documentElement.clientHeight ||
-      document.body.clientHeight
+      this.props.window.innerHeight ||
+      this.props.document.documentElement.clientHeight ||
+      this.props.document.body.clientHeight
     const inputOuterHeight = this.props.inputOuterHeight
     const countryListOuterHeight = utils.getOuterHeight(this.listElement)
     const dropdownFitsBelow =

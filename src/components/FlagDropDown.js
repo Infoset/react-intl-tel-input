@@ -24,6 +24,8 @@ export default class FlagDropDown extends Component {
     changeHighlightCountry: PropTypes.func,
     titleTip: PropTypes.string,
     refCallback: PropTypes.func.isRequired,
+    window: PropTypes.object.isRequired,
+    document: PropTypes.object.isRequired,
   }
 
   genSelectedDialCode = () => {
@@ -59,6 +61,8 @@ export default class FlagDropDown extends Component {
       preferredCountries,
       highlightedCountry,
       changeHighlightCountry,
+      window,
+      document,
     } = this.props
 
     return (
@@ -76,6 +80,8 @@ export default class FlagDropDown extends Component {
         preferredCountries={preferredCountries}
         highlightedCountry={highlightedCountry}
         changeHighlightCountry={changeHighlightCountry}
+        window={window}
+        document={document}
       />
     )
   }
@@ -89,6 +95,7 @@ export default class FlagDropDown extends Component {
       titleTip,
       dropdownContainer,
       showDropdown,
+      document,
     } = this.props
 
     return (
@@ -105,7 +112,7 @@ export default class FlagDropDown extends Component {
           {this.genArrow()}
         </div>
         {dropdownContainer && showDropdown ? (
-          <RootModal>{this.genCountryList()}</RootModal>
+          <RootModal document={document}>{this.genCountryList()}</RootModal>
         ) : (
           this.genCountryList()
         )}
