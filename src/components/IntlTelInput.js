@@ -1187,7 +1187,7 @@ class IntlTelInput extends Component {
     const targetClass = e.target.getAttribute('class')
 
     if (
-      targetClass === null ||
+      !targetClass ||
       (targetClass &&
         targetClass.indexOf('country') === -1 &&
         targetClass.indexOf('selected-flag') === -1 &&

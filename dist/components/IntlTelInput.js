@@ -843,7 +843,7 @@ var IntlTelInput = function (_Component) {
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleDocumentClick", function (e) {
       var targetClass = e.target.getAttribute('class');
 
-      if (targetClass === null || targetClass && targetClass.indexOf('country') === -1 && targetClass.indexOf('selected-flag') === -1 && targetClass.indexOf('iti-flag') === -1 && targetClass.indexOf('iti-arrow') === -1) {
+      if (!targetClass || targetClass && targetClass.indexOf('country') === -1 && targetClass.indexOf('selected-flag') === -1 && targetClass.indexOf('iti-flag') === -1 && targetClass.indexOf('iti-arrow') === -1) {
         _this.isOpening = false;
       }
 
