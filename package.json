@@ -27,7 +27,6 @@
     "url": "https://github.com/patw0929/react-intl-tel-input/issues"
   },
   "main": "dist/index.js",
-  "module": "src/index.js",
   "peerDependencies": {
     "react": ">15.4.2 <17.0.0",
     "react-dom": ">15.4.2 <17.0.0"
