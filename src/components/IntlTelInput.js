@@ -180,7 +180,7 @@ class IntlTelInput extends Component {
       if (this.props.preferredCountries.length > 0) {
         countryData = utils.getCountryData(
           this.countries,
-          this.props.preferredCountries[0]
+          this.props.preferredCountries[0],
         )
       } else {
         countryData = AllCountries.getCountries()[0]
@@ -222,7 +222,7 @@ class IntlTelInput extends Component {
           countryCode,
           false,
           false,
-          this.props.noCountryDataHandler
+          this.props.noCountryDataHandler,
         )
       : {}
 
@@ -257,13 +257,13 @@ class IntlTelInput extends Component {
     if (countryCode && countryCode !== 'auto') {
       selectedIndex = utils.findIndex(
         this.preferredCountries,
-        country => country.iso2 === countryCode
+        country => country.iso2 === countryCode,
       )
 
       if (selectedIndex === -1) {
         selectedIndex = utils.findIndex(
           this.countries,
-          country => country.iso2 === countryCode
+          country => country.iso2 === countryCode,
         )
         if (selectedIndex === -1) selectedIndex = 0
         selectedIndex += this.preferredCountries.length
@@ -276,7 +276,7 @@ class IntlTelInput extends Component {
 
     const newNumber = this.updateDialCode(
       this.selectedCountryData.dialCode,
-      !isInit
+      !isInit,
     )
 
     this.setState(
@@ -311,10 +311,10 @@ class IntlTelInput extends Component {
             currentNumber,
             this.selectedCountryData,
             fullNumber,
-            isValid
+            isValid,
           )
         }
-      }
+      },
     )
   }
 
@@ -326,7 +326,7 @@ class IntlTelInput extends Component {
     if (intlTelInputUtils) {
       return intlTelInputUtils.getExtension(
         this.getFullNumber(number),
-        this.selectedCountryData.iso2
+        this.selectedCountryData.iso2,
       )
     }
 
@@ -340,7 +340,7 @@ class IntlTelInput extends Component {
       return intlTelInputUtils.formatNumber(
         this.getFullNumber(number),
         this.selectedCountryData.iso2,
-        format
+        format,
       )
     }
 
@@ -415,7 +415,7 @@ class IntlTelInput extends Component {
         this.props.onlyCountries,
         inArray =>
           // if country is in array
-          inArray !== -1
+          inArray !== -1,
       )
     } else if (this.props.excludeCountries.length) {
       // process excludeCountries option
@@ -423,7 +423,7 @@ class IntlTelInput extends Component {
         this.props.excludeCountries,
         inArray =>
           // if country is not in array
-          inArray === -1
+          inArray === -1,
       )
     } else {
       this.countries = AllCountries.getCountries()
@@ -444,7 +444,7 @@ class IntlTelInput extends Component {
           this.addCountryCode(
             this.countryCodes,
             c.iso2,
-            c.dialCode + c.areaCodes[j]
+            c.dialCode + c.areaCodes[j],
           )
         }
       }
@@ -460,7 +460,7 @@ class IntlTelInput extends Component {
       const countryData = utils.getCountryData(
         this.countries,
         countryCode,
-        true
+        true,
       )
 
       if (countryData) {
@@ -641,7 +641,7 @@ class IntlTelInput extends Component {
         () => {
           this.setFlag(this.state.countryCode)
           this.unbindDocumentClick()
-        }
+        },
       )
     }
   }
@@ -651,7 +651,7 @@ class IntlTelInput extends Component {
     for (let i = 0, max = this.countries.length; i < max; i++) {
       if (utils.startsWith(this.countries[i].name, query)) {
         const listItem = this.flagDropDown.querySelector(
-          `.country-list [data-country-code="${this.countries[i].iso2}"]:not(.preferred)`
+          `.country-list [data-country-code="${this.countries[i].iso2}"]:not(.preferred)`,
         )
 
         const selectedIndex = utils.retrieveLiIndex(listItem)
@@ -684,7 +684,7 @@ class IntlTelInput extends Component {
       number = intlTelInputUtils.formatNumber(
         number,
         this.selectedCountryData.iso2,
-        format
+        format,
       )
     }
 
@@ -706,7 +706,7 @@ class IntlTelInput extends Component {
       number = intlTelInputUtils.formatNumber(
         number,
         this.selectedCountryData.iso2,
-        format
+        format,
       )
     }
 
@@ -723,7 +723,7 @@ class IntlTelInput extends Component {
         }
 
         this.unbindDocumentClick()
-      }
+      },
     )
   }
 
@@ -834,7 +834,7 @@ class IntlTelInput extends Component {
         this.selectedCountryData,
         fullNumber,
         this.getExtension(value),
-        e
+        e,
       )
     }
   }
@@ -851,7 +851,7 @@ class IntlTelInput extends Component {
         this.selectedCountryData,
         fullNumber,
         this.getExtension(value),
-        e
+        e,
       )
     }
   }
@@ -886,7 +886,7 @@ class IntlTelInput extends Component {
           if (highlightItem) {
             this.scrollTo(highlightItem, true)
           }
-        }
+        },
       )
     } else if (showDropdown) {
       // need to hide dropdown when click on opened flag button
@@ -912,7 +912,7 @@ class IntlTelInput extends Component {
         ? intlTelInputUtils.getExampleNumber(
             this.selectedCountryData.iso2,
             this.nationalMode,
-            numberType
+            numberType,
           )
         : ''
 
@@ -921,7 +921,7 @@ class IntlTelInput extends Component {
       if (typeof props.customPlaceholder === 'function') {
         placeholder = props.customPlaceholder(
           placeholder,
-          this.selectedCountryData
+          this.selectedCountryData,
         )
       }
 
@@ -940,7 +940,7 @@ class IntlTelInput extends Component {
         if (!this.state.showDropdown) {
           this.unbindDocumentClick()
         }
-      }
+      },
     )
   }
 
@@ -1094,7 +1094,7 @@ class IntlTelInput extends Component {
         newNumber,
         this.selectedCountryData,
         fullNumber,
-        this.getExtension(newNumber)
+        this.getExtension(newNumber),
       )
     }
   }
@@ -1226,7 +1226,7 @@ class IntlTelInput extends Component {
     cursorPosition = utils.getCursorPositionAfterFormating(
       previousStringBeforeCursor,
       previousValue,
-      value
+      value,
     )
 
     if (this.props.value !== undefined) {
@@ -1237,7 +1237,7 @@ class IntlTelInput extends Component {
         () => {
           this.updateFlagFromNumber(value)
           this.notifyPhoneNumberChange(value)
-        }
+        },
       )
     } else {
       this.setState(
@@ -1248,7 +1248,7 @@ class IntlTelInput extends Component {
         () => {
           this.updateFlagFromNumber(value)
           this.notifyPhoneNumberChange(value)
-        }
+        },
       )
     }
   }
@@ -1283,7 +1283,7 @@ class IntlTelInput extends Component {
 
     const wrapperClass = classNames(
       this.wrapperClass,
-      this.props.containerClassName
+      this.props.containerClassName,
     )
 
     const titleTip = this.selectedCountryData

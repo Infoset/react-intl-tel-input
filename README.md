@@ -1,7 +1,7 @@
 # React-Intl-Tel-Input
 
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
-[![Build Status](https://travis-ci.org/patw0929/react-intl-tel-input.svg)](https://travis-ci.org/patw0929/react-intl-tel-input)
+[![CICD](https://github.com/patw0929/react-intl-tel-input/actions/workflows/main.yml/badge.svg)](https://github.com/patw0929/react-intl-tel-input/actions/workflows/main.yml)
 [![npm version](https://badge.fury.io/js/react-intl-tel-input.svg)](http://badge.fury.io/js/react-intl-tel-input)
 [![Coverage Status](https://coveralls.io/repos/github/patw0929/react-intl-tel-input/badge.svg?branch=master)](https://coveralls.io/github/patw0929/react-intl-tel-input?branch=master)
 [![npm](https://img.shields.io/npm/l/express.svg?maxAge=2592000)]()
@@ -28,7 +28,7 @@ To build the examples locally, run:
 
 ```bash
 yarn
-yarn start
+yarn website:start
 ```
 
 Then open [`localhost:3000`](http://localhost:3000) in a browser.
@@ -36,11 +36,14 @@ Then open [`localhost:3000`](http://localhost:3000) in a browser.
 
 ## Installation
 
-The easiest way to use react-intl-tel-input is to install it from NPM and include it in your own React build process (using [Webpack](http://webpack.github.io/), etc).
-
 ```bash
 yarn add react-intl-tel-input
 ```
+
+
+### TypeScript
+
+`react-intl-tel-input` ships with official type declarations out of the box.
 
 
 ## Usage
@@ -62,18 +65,23 @@ Please see the [Demo Page](https://patw0929.github.io/react-intl-tel-input/)
 
 ## Development (`src` and the build process)
 
-To build, watch and serve the examples (which will also watch the component source), run `yarn start`.
+To build, watch and serve the examples (which will also watch the component source), run `yarn website:start`.
 
-You can prepare a distribution build using `yarn run build`.
+You can prepare a distribution build using `yarn build`.
 
 ## Contributing
 
-To contribute to react-intl-tel-input, clone this repo locally and commit your code on a separate branch. Please write tests for your code, and run the linter before opening a pull-request:
+Any kind of contribution including proposals, doc improvements, enhancements, bug fixes are always welcome. 
 
+To contribute to `react-intl-tel-input`, clone this repo locally and commit your code on a separate branch. Please write tests for your code, and run the linter before opening a pull-request:
+
+```bash
+yarn test    # if you are enhancing the JavaScript modules
+yarn test:ts # if you are enhancing the TypeScript type declarations
+yarn lint
 ```
-yarn test
-yarn run lint
-```
+
+Also, please let us know if you encounter any issue by filing an [issue](https://github.com/patw0929/react-intl-tel-input/issues).
 
 ## Inspired by
 

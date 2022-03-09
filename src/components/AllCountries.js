@@ -94,6 +94,7 @@ const defaultCountriesData = [
       '306',
       '343',
       '365',
+      '367',
       '387',
       '403',
       '416',
@@ -357,7 +358,7 @@ function _formatCountriesData(countriesData) {
 
 function initialize(externalCountriesList) {
   countries = _formatCountriesData(
-    externalCountriesList || defaultCountriesData
+    externalCountriesList || defaultCountriesData,
   )
 }
 
