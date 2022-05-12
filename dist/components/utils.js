@@ -3,13 +3,13 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = void 0;
+exports["default"] = void 0;
 
 var _AllCountries = _interopRequireDefault(require("./AllCountries"));
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 
 var _default = {
   arraysEqual: function arraysEqual(a, b) {
@@ -126,7 +126,7 @@ var _default = {
     return element.offsetHeight + parseFloat(window.getComputedStyle(element).getPropertyValue('margin-top')) + parseFloat(window.getComputedStyle(element).getPropertyValue('margin-bottom'));
   },
   getCountryData: function getCountryData(countries, countryCode, ignoreOnlyCountriesOption, allowFail, errorHandler) {
-    var countryList = ignoreOnlyCountriesOption ? _AllCountries.default.getCountries() : countries;
+    var countryList = ignoreOnlyCountriesOption ? _AllCountries["default"].getCountries() : countries;
 
     for (var i = 0; i < countryList.length; i++) {
       if (countryList[i].iso2 === countryCode) {
@@ -194,4 +194,4 @@ var _default = {
     return prevBeforeCursor.length + cursorShift;
   }
 };
-exports.default = _default;
+exports["default"] = _default;

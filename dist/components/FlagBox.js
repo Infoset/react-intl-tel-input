@@ -3,11 +3,11 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = void 0;
+exports["default"] = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 var FlagBox = function FlagBox(_ref) {
   var dialCode = _ref.dialCode,
@@ -19,22 +19,22 @@ var FlagBox = function FlagBox(_ref) {
       flagRef = _ref.flagRef,
       innerFlagRef = _ref.innerFlagRef,
       countryClass = _ref.countryClass;
-  return _react.default.createElement("li", {
+  return _react["default"].createElement("li", {
     className: countryClass,
     "data-dial-code": dialCode,
     "data-country-code": isoCode,
     onMouseOver: onMouseOver,
     onFocus: onFocus,
     onClick: onClick
-  }, _react.default.createElement("div", {
+  }, _react["default"].createElement("div", {
     ref: flagRef,
     className: "flag-box"
-  }, _react.default.createElement("div", {
+  }, _react["default"].createElement("div", {
     ref: innerFlagRef,
     className: "iti-flag ".concat(isoCode)
-  })), _react.default.createElement("span", {
+  })), _react["default"].createElement("span", {
     className: "country-name"
-  }, name), _react.default.createElement("span", {
+  }, name), _react["default"].createElement("span", {
     className: "dial-code"
   }, "+ ".concat(dialCode)));
 };
@@ -45,7 +45,7 @@ FlagBox.defaultProps = {
   onClick: function onClick() {}
 };
 var _default = FlagBox;
-exports.default = _default;
+exports["default"] = _default;
 FlagBox.__docgenInfo = {
   "description": "",
   "methods": [],
