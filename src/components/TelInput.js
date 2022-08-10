@@ -1,27 +1,13 @@
-import React, { Component } from 'react'
+/* eslint-disable react/jsx-props-no-spreading */
 import PropTypes from 'prop-types'
+import React, { Component } from 'react'
 
 export default class TelInput extends Component {
-  static propTypes = {
-    className: PropTypes.string,
-    disabled: PropTypes.bool,
-    readonly: PropTypes.bool,
-    fieldName: PropTypes.string,
-    fieldId: PropTypes.string,
-    value: PropTypes.string,
-    placeholder: PropTypes.string,
-    handleInputChange: PropTypes.func,
-    handleOnBlur: PropTypes.func,
-    handleOnFocus: PropTypes.func,
-    autoFocus: PropTypes.bool,
-    autoComplete: PropTypes.string,
-    inputProps: PropTypes.object, // eslint-disable-line react/forbid-prop-types
-    refCallback: PropTypes.func.isRequired,
-    cursorPosition: PropTypes.number,
-  }
-
-  state = {
-    hasFocus: false,
+  constructor() {
+    super()
+    this.state = {
+      hasFocus: false,
+    }
   }
 
   componentDidUpdate() {
@@ -33,12 +19,12 @@ export default class TelInput extends Component {
     }
   }
 
-  refHandler = element => {
+  refHandler = (element) => {
     this.tel = element
     this.props.refCallback(element)
   }
 
-  handleBlur = e => {
+  handleBlur = (e) => {
     this.setState({ hasFocus: false })
 
     if (typeof this.props.handleOnBlur === 'function') {
@@ -46,7 +32,7 @@ export default class TelInput extends Component {
     }
   }
 
-  handleFocus = e => {
+  handleFocus = (e) => {
     this.setState({ hasFocus: true })
 
     if (typeof this.props.handleOnFocus === 'function') {
@@ -75,4 +61,22 @@ export default class TelInput extends Component {
       />
     )
   }
+}
+
+TelInput.propTypes = {
+  className: PropTypes.string,
+  disabled: PropTypes.bool,
+  readonly: PropTypes.bool,
+  fieldName: PropTypes.string,
+  fieldId: PropTypes.string,
+  value: PropTypes.string,
+  placeholder: PropTypes.string,
+  handleInputChange: PropTypes.func,
+  handleOnBlur: PropTypes.func,
+  handleOnFocus: PropTypes.func,
+  autoFocus: PropTypes.bool,
+  autoComplete: PropTypes.string,
+  inputProps: PropTypes.object, // eslint-disable-line react/forbid-prop-types
+  refCallback: PropTypes.func.isRequired,
+  cursorPosition: PropTypes.number,
 }

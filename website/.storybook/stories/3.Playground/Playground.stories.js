@@ -4,8 +4,8 @@ import { storiesOf } from '@storybook/react'
 import { withInfo } from '@storybook/addon-info'
 import { withKnobs, text, boolean, array } from '@storybook/addon-knobs/react'
 
-import IntlTelInput from '../../../../src/components/IntlTelInput'
-import '../../../../src/intlTelInput.scss'
+import IntlTelInput from 'react-intl-tel-input/src/components/IntlTelInput'
+import 'react-intl-tel-input/src/intlTelInput.scss'
 
 const { defaultProps } = IntlTelInput
 

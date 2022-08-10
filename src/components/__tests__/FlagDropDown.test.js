@@ -1,32 +1,36 @@
+/* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable react/no-find-dom-node, no-eval */
+import { mount } from 'enzyme'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import ReactTestUtils from 'react-dom/test-utils'
-import { mount } from 'enzyme'
-import IntlTelInput from '../IntlTelInput'
-import FlagDropDown from '../FlagDropDown'
 import CountryList from '../CountryList'
+import FlagDropDown from '../FlagDropDown'
+import IntlTelInput from '../IntlTelInput'
 import TelInput from '../TelInput'
 
 // eslint-disable-next-line func-names
-describe('FlagDropDown', function() {
+describe('FlagDropDown', function () {
+  let makeSubject
+  let params
+
   beforeEach(() => {
     jest.resetModules()
 
-    this.params = {
+    params = {
       containerClassName: 'intl-tel-input',
       inputClassName: 'form-control phoneNumber',
       fieldName: 'telephone',
       defaultCountry: 'tw',
     }
 
-    this.makeSubject = () => {
-      return mount(<IntlTelInput {...this.params} />)
+    makeSubject = () => {
+      return mount(<IntlTelInput {...params} />)
     }
   })
 
   it('should be rendered', () => {
-    const subject = this.makeSubject()
+    const subject = makeSubject()
     const flagComponent = subject.find(FlagDropDown)
     const countryListComponent = subject.find(CountryList)
 
@@ -36,11 +40,11 @@ describe('FlagDropDown', function() {
 
   it('should load country "jp" from localStorage', async () => {
     window.localStorage.setItem('itiAutoCountry', 'jp')
-    this.params = {
-      ...this.params,
+    params = {
+      ...params,
       defaultCountry: 'auto',
     }
-    const subject = await this.makeSubject()
+    const subject = await makeSubject()
 
     subject.instance().utilsScriptDeferred.then(() => {
       expect(subject.state().countryCode).toBe('jp')
@@ -53,11 +57,11 @@ describe('FlagDropDown', function() {
     // This will cause calls to localStorage.getItem() to throw
     window.localStorage = {}
 
-    this.params = {
-      ...this.params,
+    params = {
+      ...params,
       defaultCountry: 'auto',
     }
-    const subject = await this.makeSubject()
+    const subject = await makeSubject()
 
     subject.instance().utilsScriptDeferred.then(() => {
       expect(subject.state().countryCode).toBe('us')
@@ -68,33 +72,30 @@ describe('FlagDropDown', function() {
   })
 
   it('should has .separate-dial-code class when with separateDialCode = true', () => {
-    this.params = {
-      ...this.params,
+    params = {
+      ...params,
       separateDialCode: true,
     }
-    const subject = this.makeSubject()
+    const subject = makeSubject()
 
     expect(subject.find('.separate-dial-code').length).toBeTruthy()
   })
 
   it('should has "tw" in class name', () => {
-    const subject = this.makeSubject()
+    const subject = makeSubject()
     const flagComponent = subject.find(FlagDropDown)
 
     expect(flagComponent.find('.iti-flag.tw').first().length).toBeTruthy()
   })
 
   it('should not has .hide class after clicking flag component', () => {
-    const subject = this.makeSubject()
+    const subject = makeSubject()
     const flagComponent = subject.find(FlagDropDown)
 
     expect(
       subject.find(CountryList).find('.country-list.hide').length,
     ).toBeTruthy()
-    flagComponent
-      .find('.selected-flag')
-      .last()
-      .simulate('click')
+    flagComponent.find('.selected-flag').last().simulate('click')
 
     subject.update()
     expect(
@@ -103,7 +104,7 @@ describe('FlagDropDown', function() {
   })
 
   it('Simulate change to Japan flag in dropdown before & after', () => {
-    const subject = this.makeSubject()
+    const subject = makeSubject()
     const flagComponent = subject.find(FlagDropDown)
 
     expect(subject.state().showDropdown).toBeFalsy()
@@ -117,8 +118,8 @@ describe('FlagDropDown', function() {
   })
 
   it('Set onlyCountries', () => {
-    this.params.onlyCountries = ['tw', 'us', 'kr']
-    const subject = this.makeSubject()
+    params.onlyCountries = ['tw', 'us', 'kr']
+    const subject = makeSubject()
     const flagComponent = subject.find(FlagDropDown)
 
     const result = [
@@ -149,24 +150,24 @@ describe('FlagDropDown', function() {
   })
 
   it('Set excludeCountries', () => {
-    this.params.excludeCountries = ['us', 'kr']
-    const subject = this.makeSubject()
+    params.excludeCountries = ['us', 'kr']
+    const subject = makeSubject()
     const flagComponent = subject.find(FlagDropDown)
 
     expect(flagComponent.props().countries.length).toBe(241)
   })
 
   it('Set defaultCountry as "auto"', async () => {
-    const lookup = callback => {
+    const lookup = (callback) => {
       callback('jp')
     }
 
-    this.params = {
-      ...this.params,
+    params = {
+      ...params,
       defaultCountry: 'auto',
       geoIpLookup: lookup,
     }
-    const subject = await this.makeSubject()
+    const subject = await makeSubject()
 
     subject.instance().utilsScriptDeferred.then(() => {
       expect(subject.state().countryCode).toBe('jp')
@@ -188,10 +189,11 @@ describe('FlagDropDown', function() {
         'selected-flag',
       )
 
-      const dropDownComponent = ReactTestUtils.findRenderedDOMComponentWithClass(
-        renderedComponent,
-        'country-list',
-      )
+      const dropDownComponent =
+        ReactTestUtils.findRenderedDOMComponentWithClass(
+          renderedComponent,
+          'country-list',
+        )
 
       ReactTestUtils.Simulate.click(ReactDOM.findDOMNode(flagComponent))
       const options = ReactDOM.findDOMNode(dropDownComponent).querySelectorAll(
@@ -451,8 +453,8 @@ describe('FlagDropDown', function() {
       expected = `${placeholder},${countryData.iso2}`
     }
 
-    this.params.customPlaceholder = customPlaceholder
-    const subject = this.makeSubject()
+    params.customPlaceholder = customPlaceholder
+    const subject = makeSubject()
     const flagComponent = subject.find(FlagDropDown)
     const countryListComponent = subject.find(CountryList)
 
@@ -467,14 +469,16 @@ describe('FlagDropDown', function() {
   it('onSelectFlag', () => {
     let expected = ''
     const onSelectFlag = (currentNumber, countryData, fullNumber, isValid) => {
-      expected = Object.assign(
-        {},
-        { currentNumber, fullNumber, isValid, ...countryData },
-      )
+      expected = {
+        currentNumber,
+        fullNumber,
+        isValid,
+        ...countryData,
+      }
     }
 
-    this.params.onSelectFlag = onSelectFlag
-    const subject = this.makeSubject()
+    params.onSelectFlag = onSelectFlag
+    const subject = makeSubject()
     const flagComponent = subject.find(FlagDropDown)
     const inputComponent = subject.find(TelInput)
     const countryListComponent = subject.find(CountryList)
@@ -498,9 +502,9 @@ describe('FlagDropDown', function() {
   })
 
   it('should output formatted number with formatNumber function', () => {
-    this.params.format = true
-    this.params.nationalMode = true
-    const subject = this.makeSubject()
+    params.format = true
+    params.nationalMode = true
+    const subject = makeSubject()
 
     expect(subject.instance().formatNumber('+886 912 345 678')).toBe(
       '0912 345 678',
@@ -508,13 +512,13 @@ describe('FlagDropDown', function() {
   })
 
   it('should highlight country from preferred list', async () => {
-    const { defaultCountry } = this.params
+    const { defaultCountry } = params
 
-    this.params = {
-      ...this.params,
+    params = {
+      ...params,
       preferredCountries: ['us', 'gb', defaultCountry],
     }
-    const subject = await this.makeSubject()
+    const subject = await makeSubject()
 
     expect(defaultCountry).toBeTruthy()
     expect(subject.state().highlightedCountry).toBe(2)

@@ -1,25 +1,13 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+/* eslint-disable react/no-unused-class-component-methods */
+/* eslint-disable react/forbid-prop-types */
 import classNames from 'classnames'
+import PropTypes from 'prop-types'
+import React, { Component } from 'react'
 import utils from './utils'
 
 import FlagBox from './FlagBox'
 
 export default class CountryList extends Component {
-  static propTypes = {
-    setFlag: PropTypes.func,
-    countries: PropTypes.arrayOf(PropTypes.object),
-    inputTop: PropTypes.number,
-    inputOuterHeight: PropTypes.number,
-    preferredCountries: PropTypes.arrayOf(PropTypes.object),
-    highlightedCountry: PropTypes.number,
-    changeHighlightCountry: PropTypes.func,
-    showDropdown: PropTypes.bool,
-    isMobile: PropTypes.bool,
-    window: PropTypes.object.isRequired,
-    document: PropTypes.object.isRequired,
-  }
-
   shouldComponentUpdate(nextProps) {
     const shouldUpdate = !utils.shallowEquals(this.props, nextProps)
 
@@ -88,10 +76,10 @@ export default class CountryList extends Component {
           onMouseOver={onMouseOverOrFocus}
           onClick={() => this.props.setFlag(country.iso2)}
           onFocus={onMouseOverOrFocus}
-          flagRef={selectedFlag => {
+          flagRef={(selectedFlag) => {
             this.selectedFlag = selectedFlag
           }}
-          innerFlagRef={selectedFlagInner => {
+          innerFlagRef={(selectedFlagInner) => {
             this.selectedFlagInner = selectedFlagInner
           }}
           countryClass={countryClass}
@@ -100,7 +88,7 @@ export default class CountryList extends Component {
     })
   }
 
-  handleMouseOver = e => {
+  handleMouseOver = (e) => {
     if (e.currentTarget.getAttribute('class').indexOf('country') > -1) {
       const selectedIndex = utils.retrieveLiIndex(e.currentTarget)
 
@@ -120,7 +108,7 @@ export default class CountryList extends Component {
 
     return (
       <ul
-        ref={listElement => {
+        ref={(listElement) => {
           this.listElement = listElement
         }}
         className={className}
@@ -131,4 +119,18 @@ export default class CountryList extends Component {
       </ul>
     )
   }
+}
+
+CountryList.propTypes = {
+  setFlag: PropTypes.func,
+  countries: PropTypes.arrayOf(PropTypes.object),
+  inputTop: PropTypes.number,
+  inputOuterHeight: PropTypes.number,
+  preferredCountries: PropTypes.arrayOf(PropTypes.object),
+  highlightedCountry: PropTypes.number,
+  changeHighlightCountry: PropTypes.func,
+  showDropdown: PropTypes.bool,
+  isMobile: PropTypes.bool,
+  window: PropTypes.object.isRequired,
+  document: PropTypes.object.isRequired,
 }

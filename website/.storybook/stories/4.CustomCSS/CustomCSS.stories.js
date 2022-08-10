@@ -4,7 +4,7 @@ import { withInfo } from '@storybook/addon-info'
 import { action } from '@storybook/addon-actions'
 import { withKnobs, text } from '@storybook/addon-knobs/react'
 
-import IntlTelInput from '../../../../src/components/IntlTelInput'
+import IntlTelInput from 'react-intl-tel-input/src/components/IntlTelInput'
 import './styles.scss'
 
 storiesOf('Usage', module)

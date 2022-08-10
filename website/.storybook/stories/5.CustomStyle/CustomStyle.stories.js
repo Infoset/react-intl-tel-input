@@ -4,8 +4,8 @@ import { withInfo } from '@storybook/addon-info'
 import { action } from '@storybook/addon-actions'
 import { withKnobs, object } from '@storybook/addon-knobs/react'
 
-import IntlTelInput from '../../../../src/components/IntlTelInput'
-import '../../../../src/intlTelInput.scss'
+import IntlTelInput from 'react-intl-tel-input/src/components/IntlTelInput'
+import 'react-intl-tel-input/src/intlTelInput.scss'
 
 storiesOf('Usage', module)
   .addDecorator(withKnobs)

@@ -1,3 +1,3 @@
-const babelJest = require('babel-jest')
+const { default: babelJest } = require('babel-jest')
 
 module.exports = babelJest.createTransformer()

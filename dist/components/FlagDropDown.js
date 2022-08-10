@@ -7,19 +7,19 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports["default"] = void 0;
 
-var _react = _interopRequireWildcard(require("react"));
-
 var _classnames = _interopRequireDefault(require("classnames"));
+
+var _react = _interopRequireWildcard(require("react"));
 
 var _CountryList = _interopRequireDefault(require("./CountryList"));
 
 var _RootModal = _interopRequireDefault(require("./RootModal"));
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
 
 function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -29,7 +29,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
 
@@ -39,7 +39,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
@@ -182,150 +182,150 @@ FlagDropDown.__docgenInfo = {
   "displayName": "FlagDropDown",
   "props": {
     "allowDropdown": {
+      "description": "",
       "type": {
         "name": "bool"
       },
-      "required": false,
-      "description": ""
+      "required": false
     },
     "dropdownContainer": {
+      "description": "",
       "type": {
         "name": "string"
       },
-      "required": false,
-      "description": ""
+      "required": false
     },
     "separateDialCode": {
+      "description": "",
       "type": {
         "name": "bool"
       },
-      "required": false,
-      "description": ""
+      "required": false
     },
     "dialCode": {
+      "description": "",
       "type": {
         "name": "string"
       },
-      "required": false,
-      "description": ""
+      "required": false
     },
     "countryCode": {
+      "description": "",
       "type": {
         "name": "string"
       },
-      "required": false,
-      "description": ""
+      "required": false
     },
     "showDropdown": {
+      "description": "",
       "type": {
         "name": "bool"
       },
-      "required": false,
-      "description": ""
+      "required": false
     },
     "clickSelectedFlag": {
+      "description": "",
       "type": {
         "name": "func"
       },
-      "required": false,
-      "description": ""
+      "required": false
     },
     "handleSelectedFlagKeydown": {
+      "description": "",
       "type": {
         "name": "func"
       },
-      "required": false,
-      "description": ""
+      "required": false
     },
     "isMobile": {
+      "description": "",
       "type": {
         "name": "bool"
       },
-      "required": false,
-      "description": ""
+      "required": false
     },
     "setFlag": {
+      "description": "",
       "type": {
         "name": "func"
       },
-      "required": false,
-      "description": ""
+      "required": false
     },
     "countries": {
+      "description": "",
       "type": {
         "name": "arrayOf",
         "value": {
           "name": "object"
         }
       },
-      "required": false,
-      "description": ""
+      "required": false
     },
     "inputTop": {
+      "description": "",
       "type": {
         "name": "number"
       },
-      "required": false,
-      "description": ""
+      "required": false
     },
     "inputOuterHeight": {
+      "description": "",
       "type": {
         "name": "number"
       },
-      "required": false,
-      "description": ""
+      "required": false
     },
     "preferredCountries": {
+      "description": "",
       "type": {
         "name": "arrayOf",
         "value": {
           "name": "object"
         }
       },
-      "required": false,
-      "description": ""
+      "required": false
     },
     "highlightedCountry": {
+      "description": "",
       "type": {
         "name": "number"
       },
-      "required": false,
-      "description": ""
+      "required": false
     },
     "changeHighlightCountry": {
+      "description": "",
       "type": {
         "name": "func"
       },
-      "required": false,
-      "description": ""
+      "required": false
     },
     "titleTip": {
+      "description": "",
       "type": {
         "name": "string"
       },
-      "required": false,
-      "description": ""
+      "required": false
     },
     "refCallback": {
+      "description": "",
       "type": {
         "name": "func"
       },
-      "required": true,
-      "description": ""
+      "required": true
     },
     "window": {
+      "description": "",
       "type": {
         "name": "object"
       },
-      "required": true,
-      "description": ""
+      "required": true
     },
     "document": {
+      "description": "",
       "type": {
         "name": "object"
       },
-      "required": true,
-      "description": ""
+      "required": true
     }
   }
 };

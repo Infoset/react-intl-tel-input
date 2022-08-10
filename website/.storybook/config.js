@@ -1,11 +1,11 @@
 import { configure, addDecorator } from '@storybook/react'
 import { withOptions } from '@storybook/addon-options'
-import { version } from '../../package.json'
+import { version } from 'react-intl-tel-input/package.json'
 
 const req = require.context('./stories', true, /.js*/)
 
 function loadStories() {
-  req.keys().forEach(filename => req(filename))
+  req.keys().forEach((filename) => req(filename))
   // eslint-disable-next-line global-require
   require('./styles/styles.scss')
 }

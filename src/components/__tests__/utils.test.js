@@ -1,4 +1,4 @@
-import jsdom from 'jsdom'
+import { JSDOM } from 'jsdom'
 import AllCountries from '../AllCountries'
 import utils from '../utils'
 
@@ -78,7 +78,8 @@ describe('utils', () => {
         <li class="b">b</li>
       </ul>
     </body></html>`
-    const doc = jsdom.jsdom(DEFAULT_HTML)
+    const dom = new JSDOM(DEFAULT_HTML)
+    const doc = dom.window.document
     const bListItem = doc.querySelector('.b')
 
     expect(utils.retrieveLiIndex(bListItem)).toBe(1)
@@ -133,7 +134,7 @@ describe('utils', () => {
         'zz',
         false,
         false,
-        country => `${country}!!`,
+        (country) => `${country}!!`,
       ),
     ).toStrictEqual({})
   })
@@ -145,12 +146,12 @@ describe('utils', () => {
     expect(utils.findIndex(array, predicate)).toEqual(-1)
 
     array = [1, 2, 3]
-    predicate = item => item === 2
+    predicate = (item) => item === 2
 
     expect(utils.findIndex(array, predicate)).toEqual(1)
 
     array = [1, 2, 3]
-    predicate = item => item === 4
+    predicate = (item) => item === 4
 
     expect(utils.findIndex(array, predicate)).toEqual(-1)
   })

@@ -6,11 +6,13 @@ module.exports = {
     '!.storybook',
   ],
   setupFiles: ['<rootDir>/config/jest/setup.js'],
-  setupTestFrameworkScriptFile: '<rootDir>/config/jest/setupTestFramework.js',
-  testEnvironment: 'jsdom',
+  setupFilesAfterEnv: ['<rootDir>/config/jest/setupTestFramework.js'],
+  testEnvironment: 'node',
   testPathIgnorePatterns: ['<rootDir>[/\\\\](build|docs|node_modules)[/\\\\]'],
   testRegex: '/__tests__/.*\\.(test|spec)\\.js$',
-  testURL: 'http://localhost',
+  testEnvironmentOptions: {
+    url: 'http://localhost',
+  },
   transform: {
     '^(?!.*\\.(js|jsx|css|scss|json)$)':
       '<rootDir>/config/jest/fileTransform.js',

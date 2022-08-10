@@ -1,33 +1,12 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+/* eslint-disable react/no-unused-class-component-methods */
+/* eslint-disable react/forbid-prop-types */
 import classNames from 'classnames'
+import PropTypes from 'prop-types'
+import React, { Component } from 'react'
 import CountryList from './CountryList'
 import RootModal from './RootModal'
 
 export default class FlagDropDown extends Component {
-  static propTypes = {
-    allowDropdown: PropTypes.bool,
-    dropdownContainer: PropTypes.string,
-    separateDialCode: PropTypes.bool,
-    dialCode: PropTypes.string,
-    countryCode: PropTypes.string,
-    showDropdown: PropTypes.bool,
-    clickSelectedFlag: PropTypes.func,
-    handleSelectedFlagKeydown: PropTypes.func,
-    isMobile: PropTypes.bool,
-    setFlag: PropTypes.func,
-    countries: PropTypes.arrayOf(PropTypes.object),
-    inputTop: PropTypes.number,
-    inputOuterHeight: PropTypes.number,
-    preferredCountries: PropTypes.arrayOf(PropTypes.object),
-    highlightedCountry: PropTypes.number,
-    changeHighlightCountry: PropTypes.func,
-    titleTip: PropTypes.string,
-    refCallback: PropTypes.func.isRequired,
-    window: PropTypes.object.isRequired,
-    document: PropTypes.object.isRequired,
-  }
-
   genSelectedDialCode = () => {
     const { separateDialCode, dialCode } = this.props
 
@@ -67,7 +46,7 @@ export default class FlagDropDown extends Component {
 
     return (
       <CountryList
-        ref={countryList => {
+        ref={(countryList) => {
           this.countryList = countryList
         }}
         dropdownContainer={dropdownContainer}
@@ -119,4 +98,27 @@ export default class FlagDropDown extends Component {
       </div>
     )
   }
+}
+
+FlagDropDown.propTypes = {
+  allowDropdown: PropTypes.bool,
+  dropdownContainer: PropTypes.string,
+  separateDialCode: PropTypes.bool,
+  dialCode: PropTypes.string,
+  countryCode: PropTypes.string,
+  showDropdown: PropTypes.bool,
+  clickSelectedFlag: PropTypes.func,
+  handleSelectedFlagKeydown: PropTypes.func,
+  isMobile: PropTypes.bool,
+  setFlag: PropTypes.func,
+  countries: PropTypes.arrayOf(PropTypes.object),
+  inputTop: PropTypes.number,
+  inputOuterHeight: PropTypes.number,
+  preferredCountries: PropTypes.arrayOf(PropTypes.object),
+  highlightedCountry: PropTypes.number,
+  changeHighlightCountry: PropTypes.func,
+  titleTip: PropTypes.string,
+  refCallback: PropTypes.func.isRequired,
+  window: PropTypes.object.isRequired,
+  document: PropTypes.object.isRequired,
 }

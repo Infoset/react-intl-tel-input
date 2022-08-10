@@ -9,7 +9,7 @@ var _react = _interopRequireDefault(require("react"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
-var FlagBox = function FlagBox(_ref) {
+function FlagBox(_ref) {
   var dialCode = _ref.dialCode,
       isoCode = _ref.isoCode,
       name = _ref.name,
@@ -37,15 +37,13 @@ var FlagBox = function FlagBox(_ref) {
   }, name), _react["default"].createElement("span", {
     className: "dial-code"
   }, "+ ".concat(dialCode)));
-};
+}
 
 FlagBox.defaultProps = {
   onFocus: function onFocus() {},
   onMouseOver: function onMouseOver() {},
   onClick: function onClick() {}
 };
-var _default = FlagBox;
-exports["default"] = _default;
 FlagBox.__docgenInfo = {
   "description": "",
   "methods": [],
@@ -56,75 +54,77 @@ FlagBox.__docgenInfo = {
         "value": "() => {}",
         "computed": false
       },
+      "description": "",
       "type": {
         "name": "func"
       },
-      "required": false,
-      "description": ""
+      "required": false
     },
     "onMouseOver": {
       "defaultValue": {
         "value": "() => {}",
         "computed": false
       },
+      "description": "",
       "type": {
         "name": "func"
       },
-      "required": false,
-      "description": ""
+      "required": false
     },
     "onClick": {
       "defaultValue": {
         "value": "() => {}",
         "computed": false
       },
+      "description": "",
       "type": {
         "name": "func"
       },
-      "required": false,
-      "description": ""
+      "required": false
     },
     "dialCode": {
+      "description": "",
       "type": {
         "name": "string"
       },
-      "required": true,
-      "description": ""
+      "required": true
     },
     "isoCode": {
+      "description": "",
       "type": {
         "name": "string"
       },
-      "required": true,
-      "description": ""
+      "required": true
     },
     "name": {
+      "description": "",
       "type": {
         "name": "string"
       },
-      "required": true,
-      "description": ""
+      "required": true
     },
     "flagRef": {
+      "description": "",
       "type": {
         "name": "func"
       },
-      "required": false,
-      "description": ""
+      "required": false
     },
     "innerFlagRef": {
+      "description": "",
       "type": {
         "name": "func"
       },
-      "required": false,
-      "description": ""
+      "required": false
     },
     "countryClass": {
+      "description": "",
       "type": {
         "name": "string"
       },
-      "required": true,
-      "description": ""
+      "required": true
     }
   }
 };
+var _default = FlagBox;
+exports["default"] = _default;

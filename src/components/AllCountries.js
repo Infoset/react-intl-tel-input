@@ -347,7 +347,7 @@ const defaultCountriesData = [
 let countries
 
 function _formatCountriesData(countriesData) {
-  return countriesData.map(country => ({
+  return countriesData.map((country) => ({
     name: country[0],
     iso2: country[1],
     dialCode: country[2],

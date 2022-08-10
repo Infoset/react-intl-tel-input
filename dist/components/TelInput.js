@@ -13,7 +13,7 @@ function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "functio
 
 function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -23,7 +23,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
 
@@ -33,7 +33,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
@@ -47,15 +47,7 @@ var TelInput = function (_Component) {
 
     _classCallCheck(this, TelInput);
 
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    _this = _super.call.apply(_super, [this].concat(args));
-
-    _defineProperty(_assertThisInitialized(_this), "state", {
-      hasFocus: false
-    });
+    _this = _super.call(this);
 
     _defineProperty(_assertThisInitialized(_this), "refHandler", function (element) {
       _this.tel = element;
@@ -83,6 +75,9 @@ var TelInput = function (_Component) {
       }
     });
 
+    _this.state = {
+      hasFocus: false
+    };
     return _this;
   }
 
@@ -152,109 +147,109 @@ TelInput.__docgenInfo = {
   "displayName": "TelInput",
   "props": {
     "className": {
+      "description": "",
       "type": {
         "name": "string"
       },
-      "required": false,
-      "description": ""
+      "required": false
     },
     "disabled": {
+      "description": "",
       "type": {
         "name": "bool"
       },
-      "required": false,
-      "description": ""
+      "required": false
     },
     "readonly": {
+      "description": "",
       "type": {
         "name": "bool"
       },
-      "required": false,
-      "description": ""
+      "required": false
     },
     "fieldName": {
+      "description": "",
       "type": {
         "name": "string"
       },
-      "required": false,
-      "description": ""
+      "required": false
     },
     "fieldId": {
+      "description": "",
       "type": {
         "name": "string"
       },
-      "required": false,
-      "description": ""
+      "required": false
     },
     "value": {
+      "description": "",
       "type": {
         "name": "string"
       },
-      "required": false,
-      "description": ""
+      "required": false
     },
     "placeholder": {
+      "description": "",
       "type": {
         "name": "string"
       },
-      "required": false,
-      "description": ""
+      "required": false
     },
     "handleInputChange": {
+      "description": "",
       "type": {
         "name": "func"
       },
-      "required": false,
-      "description": ""
+      "required": false
     },
     "handleOnBlur": {
+      "description": "",
       "type": {
         "name": "func"
       },
-      "required": false,
-      "description": ""
+      "required": false
     },
     "handleOnFocus": {
+      "description": "",
       "type": {
         "name": "func"
       },
-      "required": false,
-      "description": ""
+      "required": false
     },
     "autoFocus": {
+      "description": "",
       "type": {
         "name": "bool"
       },
-      "required": false,
-      "description": ""
+      "required": false
     },
     "autoComplete": {
+      "description": "",
       "type": {
         "name": "string"
       },
-      "required": false,
-      "description": ""
+      "required": false
     },
     "inputProps": {
+      "description": "",
       "type": {
         "name": "object"
       },
-      "required": false,
-      "description": ""
+      "required": false
     },
     "refCallback": {
+      "description": "",
       "type": {
         "name": "func"
       },
-      "required": true,
-      "description": ""
+      "required": true
     },
     "cursorPosition": {
+      "description": "",
       "type": {
         "name": "number"
       },
-      "required": false,
-      "description": ""
+      "required": false
     }
   }
 };

@@ -25,6 +25,10 @@ var _constants = require("./constants");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
 
 function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
@@ -37,7 +41,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
 
@@ -47,7 +51,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
@@ -1011,7 +1015,9 @@ var IntlTelInput = function (_Component) {
     key: "render",
     value: function render() {
       var inputClass = this.props.inputClassName;
-      var wrapperStyle = Object.assign({}, this.props.style || {});
+
+      var wrapperStyle = _objectSpread({}, this.props.style || {});
+
       this.wrapperClass['allow-dropdown'] = this.allowDropdown;
       this.wrapperClass.expanded = this.state.showDropdown;
       var wrapperClass = (0, _classnames["default"])(this.wrapperClass, this.props.containerClassName);
@@ -1118,23 +1124,9 @@ IntlTelInput.defaultProps = {
   window: window,
   document: document
 };
-var _default = IntlTelInput;
-exports["default"] = _default;
 IntlTelInput.__docgenInfo = {
   "description": "",
   "methods": [{
-    "name": "getDerivedStateFromProps",
-    "docblock": null,
-    "modifiers": ["static"],
-    "params": [{
-      "name": "nextProps",
-      "type": null
-    }, {
-      "name": "prevState",
-      "type": null
-    }],
-    "returns": null
-  }, {
     "name": "updateFlagOnDefaultCountryChange",
     "docblock": null,
     "modifiers": [],
@@ -1610,353 +1602,353 @@ IntlTelInput.__docgenInfo = {
         "value": "'intl-tel-input'",
         "computed": false
       },
+      "description": "Container CSS class name.",
       "type": {
         "name": "string"
       },
-      "required": false,
-      "description": "Container CSS class name."
+      "required": false
     },
     "inputClassName": {
       "defaultValue": {
         "value": "''",
         "computed": false
       },
+      "description": "Text input CSS class name.",
       "type": {
         "name": "string"
       },
-      "required": false,
-      "description": "Text input CSS class name."
+      "required": false
     },
     "fieldName": {
       "defaultValue": {
         "value": "''",
         "computed": false
       },
+      "description": "It's used as `input` field `name` attribute.",
       "type": {
         "name": "string"
       },
-      "required": false,
-      "description": "It's used as `input` field `name` attribute."
+      "required": false
     },
     "fieldId": {
       "defaultValue": {
         "value": "''",
         "computed": false
       },
+      "description": "It's used as `input` field `id` attribute.",
       "type": {
         "name": "string"
       },
-      "required": false,
-      "description": "It's used as `input` field `id` attribute."
+      "required": false
     },
     "defaultValue": {
       "defaultValue": {
         "value": "''",
         "computed": false
       },
+      "description": "The value used to initialize input. This will only work on uncontrolled component.",
       "type": {
         "name": "string"
       },
-      "required": false,
-      "description": "The value used to initialize input. This will only work on uncontrolled component."
+      "required": false
     },
     "countriesData": {
       "defaultValue": {
         "value": "null",
         "computed": false
       },
+      "description": "Countries data can be configured, it defaults to data defined in `AllCountries`.",
       "type": {
         "name": "arrayOf",
         "value": {
           "name": "array"
         }
       },
-      "required": false,
-      "description": "Countries data can be configured, it defaults to data defined in `AllCountries`."
+      "required": false
     },
     "allowDropdown": {
       "defaultValue": {
         "value": "true",
         "computed": false
       },
+      "description": "Whether or not to allow the dropdown. If disabled, there is no dropdown arrow, and the selected flag is not clickable.\nAlso we display the selected flag on the right instead because it is just a marker of state.",
       "type": {
         "name": "bool"
       },
-      "required": false,
-      "description": "Whether or not to allow the dropdown. If disabled, there is no dropdown arrow, and the selected flag is not clickable.\nAlso we display the selected flag on the right instead because it is just a marker of state."
+      "required": false
     },
     "autoHideDialCode": {
       "defaultValue": {
         "value": "true",
         "computed": false
       },
+      "description": "If there is just a dial code in the input: remove it on blur, and re-add it on focus.",
       "type": {
         "name": "bool"
       },
-      "required": false,
-      "description": "If there is just a dial code in the input: remove it on blur, and re-add it on focus."
+      "required": false
     },
     "autoPlaceholder": {
       "defaultValue": {
         "value": "true",
         "computed": false
       },
+      "description": "Add or remove input placeholder with an example number for the selected country.",
       "type": {
         "name": "bool"
       },
-      "required": false,
-      "description": "Add or remove input placeholder with an example number for the selected country."
+      "required": false
     },
     "customPlaceholder": {
       "defaultValue": {
         "value": "null",
         "computed": false
       },
+      "description": "Change the placeholder generated by autoPlaceholder. Must return a string.",
       "type": {
         "name": "func"
       },
-      "required": false,
-      "description": "Change the placeholder generated by autoPlaceholder. Must return a string."
+      "required": false
     },
     "excludeCountries": {
       "defaultValue": {
         "value": "[]",
         "computed": false
       },
+      "description": "Don't display the countries you specify. (Array)",
       "type": {
         "name": "arrayOf",
         "value": {
           "name": "string"
         }
       },
-      "required": false,
-      "description": "Don't display the countries you specify. (Array)"
+      "required": false
     },
     "formatOnInit": {
       "defaultValue": {
         "value": "true",
         "computed": false
       },
+      "description": "Format the input value during initialisation.",
       "type": {
         "name": "bool"
       },
-      "required": false,
-      "description": "Format the input value during initialisation."
+      "required": false
     },
     "separateDialCode": {
       "defaultValue": {
         "value": "false",
         "computed": false
       },
+      "description": "Display the country dial code next to the selected flag so it's not part of the typed number.\nNote that this will disable nationalMode because technically we are dealing with international numbers,\nbut with the dial code separated.",
       "type": {
         "name": "bool"
       },
-      "required": false,
-      "description": "Display the country dial code next to the selected flag so it's not part of the typed number.\nNote that this will disable nationalMode because technically we are dealing with international numbers,\nbut with the dial code separated."
+      "required": false
     },
     "defaultCountry": {
       "defaultValue": {
         "value": "''",
         "computed": false
       },
+      "description": "Default country.",
       "type": {
         "name": "string"
       },
-      "required": false,
-      "description": "Default country."
+      "required": false
     },
     "geoIpLookup": {
       "defaultValue": {
         "value": "null",
         "computed": false
       },
+      "description": "GeoIp lookup function.",
       "type": {
         "name": "func"
       },
-      "required": false,
-      "description": "GeoIp lookup function."
+      "required": false
     },
     "nationalMode": {
       "defaultValue": {
         "value": "true",
         "computed": false
       },
+      "description": "Don't insert international dial codes.",
       "type": {
         "name": "bool"
       },
-      "required": false,
-      "description": "Don't insert international dial codes."
+      "required": false
     },
     "numberType": {
       "defaultValue": {
         "value": "'MOBILE'",
         "computed": false
       },
+      "description": "Number type to use for placeholders.",
       "type": {
         "name": "string"
       },
-      "required": false,
-      "description": "Number type to use for placeholders."
+      "required": false
     },
     "noCountryDataHandler": {
       "defaultValue": {
         "value": "null",
         "computed": false
       },
+      "description": "The function which can catch the \"no this default country\" exception.",
       "type": {
         "name": "func"
       },
-      "required": false,
-      "description": "The function which can catch the \"no this default country\" exception."
+      "required": false
     },
     "onlyCountries": {
       "defaultValue": {
         "value": "[]",
         "computed": false
       },
+      "description": "Display only these countries.",
       "type": {
         "name": "arrayOf",
         "value": {
           "name": "string"
         }
       },
-      "required": false,
-      "description": "Display only these countries."
+      "required": false
     },
     "preferredCountries": {
       "defaultValue": {
         "value": "['us', 'gb']",
         "computed": false
       },
+      "description": "The countries at the top of the list. defaults to United States and United Kingdom.",
       "type": {
         "name": "arrayOf",
         "value": {
           "name": "string"
         }
       },
-      "required": false,
-      "description": "The countries at the top of the list. defaults to United States and United Kingdom."
+      "required": false
     },
     "onPhoneNumberChange": {
       "defaultValue": {
         "value": "null",
         "computed": false
       },
+      "description": "Optional validation callback function. It returns validation status, input box value and selected country data.",
       "type": {
         "name": "func"
       },
-      "required": false,
-      "description": "Optional validation callback function. It returns validation status, input box value and selected country data."
+      "required": false
     },
     "onPhoneNumberBlur": {
       "defaultValue": {
         "value": "null",
         "computed": false
       },
+      "description": "Optional validation callback function. It returns validation status, input box value and selected country data.",
       "type": {
         "name": "func"
       },
-      "required": false,
-      "description": "Optional validation callback function. It returns validation status, input box value and selected country data."
+      "required": false
     },
     "onPhoneNumberFocus": {
       "defaultValue": {
         "value": "null",
         "computed": false
       },
+      "description": "Optional validation callback function. It returns validation status, input box value and selected country data.",
       "type": {
         "name": "func"
       },
-      "required": false,
-      "description": "Optional validation callback function. It returns validation status, input box value and selected country data."
+      "required": false
     },
     "onSelectFlag": {
       "defaultValue": {
         "value": "null",
         "computed": false
       },
+      "description": "Allow main app to do things when a country is selected.",
       "type": {
         "name": "func"
       },
-      "required": false,
-      "description": "Allow main app to do things when a country is selected."
+      "required": false
     },
     "disabled": {
       "defaultValue": {
         "value": "false",
         "computed": false
       },
+      "description": "Disable this component.",
       "type": {
         "name": "bool"
       },
-      "required": false,
-      "description": "Disable this component."
+      "required": false
     },
     "autoFocus": {
       "defaultValue": {
         "value": "false",
         "computed": false
       },
+      "description": "Enable auto focus",
       "type": {
         "name": "bool"
       },
-      "required": false,
-      "description": "Enable auto focus"
+      "required": false
     },
     "useMobileFullscreenDropdown": {
       "defaultValue": {
         "value": "true",
         "computed": false
       },
+      "description": "Render fullscreen flag dropdown when mobile useragent is detected. The dropdown element is rendered as a direct child of document.body",
       "type": {
         "name": "bool"
       },
-      "required": false,
-      "description": "Render fullscreen flag dropdown when mobile useragent is detected. The dropdown element is rendered as a direct child of document.body"
+      "required": false
     },
     "autoComplete": {
       "defaultValue": {
         "value": "'off'",
         "computed": false
       },
+      "description": "Set the value of the autoComplete attribute on the input. For example, set it to phone to tell the browser where to auto complete phone numbers.",
       "type": {
         "name": "string"
       },
-      "required": false,
-      "description": "Set the value of the autoComplete attribute on the input. For example, set it to phone to tell the browser where to auto complete phone numbers."
+      "required": false
     },
     "telInputProps": {
       "defaultValue": {
         "value": "{}",
         "computed": false
       },
+      "description": "Pass through arbitrary props to the tel input element.",
       "type": {
         "name": "object"
       },
-      "required": false,
-      "description": "Pass through arbitrary props to the tel input element."
+      "required": false
     },
     "format": {
       "defaultValue": {
         "value": "false",
         "computed": false
       },
+      "description": "Format the number.",
       "type": {
         "name": "bool"
       },
-      "required": false,
-      "description": "Format the number."
+      "required": false
     },
     "onFlagClick": {
       "defaultValue": {
         "value": "null",
         "computed": false
       },
+      "description": "Allow main app to do things when flag icon is clicked.",
       "type": {
         "name": "func"
       },
-      "required": false,
-      "description": "Allow main app to do things when flag icon is clicked."
+      "required": false
     },
     "window": {
       "defaultValue": {
@@ -1973,26 +1965,28 @@ IntlTelInput.__docgenInfo = {
       "required": false
     },
     "value": {
+      "description": "The value of the input field. Useful for making input value controlled from outside the component.",
       "type": {
         "name": "string"
       },
-      "required": false,
-      "description": "The value of the input field. Useful for making input value controlled from outside the component."
+      "required": false
     },
     "placeholder": {
+      "description": "Static placeholder for input controller. When defined it takes priority over autoPlaceholder.",
       "type": {
         "name": "string"
       },
-      "required": false,
-      "description": "Static placeholder for input controller. When defined it takes priority over autoPlaceholder."
+      "required": false
     },
     "style": {
+      "description": "Style object for the wrapper div. Useful for setting 100% width on the wrapper, etc.",
       "type": {
         "name": "custom",
         "raw": "StylePropTypes"
       },
-      "required": false,
-      "description": "Style object for the wrapper div. Useful for setting 100% width on the wrapper, etc."
+      "required": false
     }
   }
 };
+var _default = IntlTelInput;
+exports["default"] = _default;

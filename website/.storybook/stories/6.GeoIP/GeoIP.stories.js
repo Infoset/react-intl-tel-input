@@ -3,8 +3,8 @@ import { storiesOf } from '@storybook/react'
 import { withInfo } from '@storybook/addon-info'
 import { action } from '@storybook/addon-actions'
 
-import IntlTelInput from '../../../../src/components/IntlTelInput'
-import '../../../../src/intlTelInput.scss'
+import IntlTelInput from 'react-intl-tel-input/src/components/IntlTelInput'
+import 'react-intl-tel-input/src/intlTelInput.scss'
 import { lookup } from '../../helpers/helpers'
 
 storiesOf('Usage', module)

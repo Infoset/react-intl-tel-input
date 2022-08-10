@@ -1,18 +1,22 @@
+/* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable no-eval, no-restricted-properties */
-import React from 'react'
 import { mount } from 'enzyme'
+import React from 'react'
+import FlagDropDown from '../FlagDropDown'
 import IntlTelInput from '../IntlTelInput'
 import TelInput from '../TelInput'
-import FlagDropDown from '../FlagDropDown'
 
 // eslint-disable-next-line func-names
-describe('TelInput', function() {
+describe('TelInput', function () {
+  let params
+  let makeSubject
+
   beforeEach(() => {
     jest.resetModules()
 
     document.body.innerHTML = '<div id="root"></div>'
 
-    this.params = {
+    params = {
       containerClassName: 'intl-tel-input',
       inputClassName: 'form-control phoneNumber',
       fieldName: 'telephone',
@@ -20,22 +24,22 @@ describe('TelInput', function() {
       defaultCountry: 'tw',
       defaultValue: '0999 123 456',
     }
-    this.makeSubject = () => {
-      return mount(<IntlTelInput {...this.params} />, {
+    makeSubject = () => {
+      return mount(<IntlTelInput {...params} />, {
         attachTo: document.querySelector('#root'),
       })
     }
   })
 
   it('should set fieldName as "telephone"', () => {
-    const subject = this.makeSubject()
+    const subject = makeSubject()
     const inputComponent = subject.find(TelInput)
 
     expect(inputComponent.props().fieldName).toBe('telephone')
   })
 
   it('should set fieldId as "telephone-id"', () => {
-    const subject = this.makeSubject()
+    const subject = makeSubject()
     const inputComponent = subject.find(TelInput)
 
     expect(inputComponent.props().fieldId).toBe('telephone-id')
@@ -55,8 +59,8 @@ describe('TelInput', function() {
 
     window.intlTelInputUtils = undefined
 
-    this.params.onPhoneNumberChange = onPhoneNumberChange
-    const subject = this.makeSubject()
+    params.onPhoneNumberChange = onPhoneNumberChange
+    const subject = makeSubject()
     const inputComponent = subject.find(TelInput)
 
     inputComponent.simulate('change', { target: { value: '+886911222333' } })
@@ -64,14 +68,14 @@ describe('TelInput', function() {
   })
 
   it('should set value as "0999 123 456"', async () => {
-    const subject = await this.makeSubject()
+    const subject = await makeSubject()
     const inputComponent = subject.find(TelInput)
 
     expect(inputComponent.props().value).toBe('0999 123 456')
   })
 
   it('should set className', () => {
-    const subject = this.makeSubject()
+    const subject = makeSubject()
     const inputComponent = subject.find(TelInput)
 
     expect(inputComponent.find('.form-control.phoneNumber').length).toBeTruthy()
@@ -90,36 +94,36 @@ describe('TelInput', function() {
       initialSelectFlag.call(this, countryCode, setFocus)
     }
 
-    this.params = {
-      ...this.params,
+    params = {
+      ...params,
       value: '+886901234567',
       preferredCountries: ['kr', 'jp', 'tw'],
     }
-    this.makeSubject()
+    makeSubject()
 
     IntlTelInput.prototype.selectFlag = initialSelectFlag
     expect(focused).toBeFalsy()
   })
 
   it('should has "kr" in preferred countries state', () => {
-    this.params = {
-      ...this.params,
+    params = {
+      ...params,
       defaultCountry: 'zz',
       preferredCountries: ['kr', 'jp', 'tw'],
     }
-    const subject = this.makeSubject()
+    const subject = makeSubject()
 
     expect(subject.state().countryCode).toBe('kr')
   })
 
   it('should set countryCode as "af" in state, when giving an invalid default country', () => {
-    this.params = {
-      ...this.params,
+    params = {
+      ...params,
       preferredCountries: [],
       defaultValue: '',
       defaultCountry: 'zz',
     }
-    const subject = this.makeSubject()
+    const subject = makeSubject()
 
     expect(subject.state().countryCode).toBe('af')
   })
@@ -127,23 +131,23 @@ describe('TelInput', function() {
   it('getNumber without libphonenumber', () => {
     window.intlTelInputUtils = undefined
 
-    this.params = {
-      ...this.params,
+    params = {
+      ...params,
     }
-    const subject = this.makeSubject()
+    const subject = makeSubject()
 
     expect(subject.instance().getNumber(1)).toBe('')
   })
 
   it('setNumber', () => {
-    const subject = this.makeSubject()
+    const subject = makeSubject()
 
     subject.instance().setNumber('+810258310015')
     expect(subject.state().countryCode).toBe('jp')
   })
 
   it('handleKeyUp', () => {
-    const subject = this.makeSubject()
+    const subject = makeSubject()
     const inputComponent = subject.find(TelInput)
 
     inputComponent.simulate('focus')
@@ -163,12 +167,12 @@ describe('TelInput', function() {
   })
 
   it('ensurePlus', () => {
-    this.params = {
-      ...this.params,
+    params = {
+      ...params,
       nationalMode: false,
       defaultValue: '+886999111222345',
     }
-    const subject = this.makeSubject()
+    const subject = makeSubject()
     const inputComponent = subject.find(TelInput)
 
     inputComponent.simulate('focus')
@@ -189,8 +193,8 @@ describe('TelInput', function() {
   })
 
   it('Disabled nationalMode and input phone number', () => {
-    this.params.nationalMode = false
-    const subject = this.makeSubject()
+    params.nationalMode = false
+    const subject = makeSubject()
     const inputComponent = subject.find(TelInput)
 
     inputComponent.simulate('change', { target: { value: '+886901234567' } })
@@ -201,7 +205,7 @@ describe('TelInput', function() {
   })
 
   it('utils loaded', () => {
-    this.makeSubject()
+    makeSubject()
 
     expect(typeof window.intlTelInputUtils === 'object')
     expect(typeof window.intlTelInputUtils.isValidNumber === 'function')
@@ -219,8 +223,8 @@ describe('TelInput', function() {
       expected = `${isValid},${newNumber},${countryData.iso2},${fullNumber},${ext}`
     }
 
-    this.params.onPhoneNumberChange = onPhoneNumberChange
-    const subject = this.makeSubject()
+    params.onPhoneNumberChange = onPhoneNumberChange
+    const subject = makeSubject()
     const inputComponent = subject.find(TelInput)
 
     inputComponent.simulate('change', { target: { value: '+886911222333' } })
@@ -228,7 +232,7 @@ describe('TelInput', function() {
   })
 
   it('Blur and cleaning the empty dialcode', () => {
-    const subject = this.makeSubject()
+    const subject = makeSubject()
     const inputComponent = subject.find(TelInput)
 
     inputComponent.simulate('change', { target: { value: '+886' } })
@@ -252,8 +256,8 @@ describe('TelInput', function() {
         expected = `${isValid},${newNumber},${countryData.iso2},${fullNumber},${ext},${type}`
       }
 
-      this.params[property] = onPhoneNumberEvent
-      const subject = this.makeSubject()
+      params[property] = onPhoneNumberEvent
+      const subject = makeSubject()
       const inputComponent = subject.find(TelInput)
 
       inputComponent.simulate('change', { target: { value: '+886911222333' } })
@@ -269,24 +273,24 @@ describe('TelInput', function() {
   ].forEach(testOnPhoneNumberEvent)
 
   it('should has empty value with false nationalMode, false autoHideDialCode and false separateDialCode', () => {
-    this.params = {
-      ...this.params,
+    params = {
+      ...params,
       defaultValue: '',
       nationalMode: false,
       autoHideDialCode: false,
       separateDialCode: false,
     }
-    const subject = this.makeSubject()
+    const subject = makeSubject()
 
     expect(subject.state().value).toBe('+886')
   })
 
   it('updateFlagFromNumber', () => {
-    this.params = {
+    params = {
       defaultCountry: 'us',
       nationalMode: true,
     }
-    const subject = this.makeSubject()
+    const subject = makeSubject()
     const inputComponent = subject.find(TelInput)
 
     inputComponent.simulate('change', { target: { value: '9183319436' } })
@@ -297,18 +301,18 @@ describe('TelInput', function() {
   })
 
   it('isValidNumber', () => {
-    const subject = this.makeSubject()
+    const subject = makeSubject()
 
     expect(subject.instance().isValidNumber('0910123456')).toBeTruthy()
     expect(subject.instance().isValidNumber('091012345')).toBeFalsy()
   })
 
   it('getFullNumber', () => {
-    this.params = {
-      ...this.params,
+    params = {
+      ...params,
       separateDialCode: true,
     }
-    const subject = this.makeSubject()
+    const subject = makeSubject()
     const inputComponent = subject.find(TelInput)
 
     inputComponent.simulate('change', { target: { value: '910123456' } })
@@ -316,8 +320,8 @@ describe('TelInput', function() {
   })
 
   it('should render custom placeholder', () => {
-    this.params.placeholder = 'foo'
-    const subject = this.makeSubject()
+    params.placeholder = 'foo'
+    const subject = makeSubject()
     const inputComponent = subject.find(TelInput)
 
     expect(inputComponent.props().placeholder).toBe('foo')
@@ -325,16 +329,16 @@ describe('TelInput', function() {
 
   // FIXME: Enzyme not support :focus in current time
   xit('should focus input when autoFocus set to true', () => {
-    this.params.autoFocus = true
-    const subject = this.makeSubject()
+    params.autoFocus = true
+    const subject = makeSubject()
     const inputComponent = subject.find(TelInput)
 
     expect(inputComponent.is(':focus')).toBeTruthy()
   })
 
   it('should not focus input when autoFocus set to false', () => {
-    this.params.autoFocus = false
-    const subject = this.makeSubject()
+    params.autoFocus = false
+    const subject = makeSubject()
     const inputComponent = subject.find(TelInput)
 
     expect(document.activeElement).not.toBe(inputComponent)
@@ -353,14 +357,14 @@ describe('TelInput', function() {
     })
 
     it('sets FlagDropDown "dropdowncontainer" prop to "body"', () => {
-      const subject = this.makeSubject()
+      const subject = makeSubject()
       const flagDropdownComponent = subject.find(FlagDropDown)
 
       expect(flagDropdownComponent.props().dropdownContainer).toBe('body')
     })
 
     it('sets FlagDropDown "isMobile" prop to true', () => {
-      const subject = this.makeSubject()
+      const subject = makeSubject()
       const flagDropdownComponent = subject.find(FlagDropDown)
 
       expect(flagDropdownComponent.props().isMobile).toBeTruthy()
@@ -372,8 +376,8 @@ describe('TelInput', function() {
 
     it(`does not set FlagDropDown "dropdowncontainer" to "body"
        when "useMobileFullscreenDropdown" set to false`, () => {
-      this.params.useMobileFullscreenDropdown = false
-      const subject = this.makeSubject()
+      params.useMobileFullscreenDropdown = false
+      const subject = makeSubject()
       const flagDropdownComponent = subject.find(FlagDropDown)
 
       expect(flagDropdownComponent.props().dropdownContainer).toBe('')
@@ -382,14 +386,14 @@ describe('TelInput', function() {
 
   describe('controlled', () => {
     it('should set the value', () => {
-      const subject = this.makeSubject()
+      const subject = makeSubject()
 
       expect(subject.state().value).toBe('0999 123 456')
     })
 
     it('should not change input value if value is constrained by parent', () => {
-      this.params.value = '0999 123 456'
-      const subject = this.makeSubject()
+      params.value = '0999 123 456'
+      const subject = makeSubject()
       const inputComponent = subject.find(TelInput)
 
       inputComponent.simulate('change', { target: { value: '12345' } })
@@ -397,7 +401,7 @@ describe('TelInput', function() {
     })
 
     it('should change input value on value prop change', () => {
-      const subject = this.makeSubject()
+      const subject = makeSubject()
 
       subject.setProps({ value: '+447598455159' })
       subject.update()
@@ -411,7 +415,7 @@ describe('TelInput', function() {
     })
 
     it('should update country flag when value updates', () => {
-      const subject = this.makeSubject()
+      const subject = makeSubject()
 
       subject.setProps({ value: 'foo bar' })
       subject.update()
@@ -420,7 +424,7 @@ describe('TelInput', function() {
     })
 
     it('should be able to delete country code after input field has been populated with number', () => {
-      const subject = this.makeSubject()
+      const subject = makeSubject()
 
       subject.setProps({ value: '+447598455159' })
 
@@ -430,7 +434,7 @@ describe('TelInput', function() {
     })
 
     it('should change input placeholder on placeholder prop change', () => {
-      const subject = this.makeSubject()
+      const subject = makeSubject()
 
       subject.setProps({ placeholder: 'Phone number' })
       subject.update()
@@ -444,7 +448,7 @@ describe('TelInput', function() {
     })
 
     it('should change input placeholder on customPlaceholder prop change', () => {
-      const subject = this.makeSubject()
+      const subject = makeSubject()
 
       subject.setProps({ customPlaceholder: () => 'Phone number' })
       subject.update()
@@ -458,7 +462,7 @@ describe('TelInput', function() {
     })
 
     it('should set "expanded" class to wrapper only when flags are open', () => {
-      const subject = this.makeSubject()
+      const subject = makeSubject()
       const flagComponent = subject
         .find(FlagDropDown)
         .find('.selected-flag')
@@ -478,8 +482,8 @@ describe('TelInput', function() {
 
   describe('uncontrolled', () => {
     it('should initialize state with defaultValue', () => {
-      this.params.defaultValue = '54321'
-      const subject = this.makeSubject()
+      params.defaultValue = '54321'
+      const subject = makeSubject()
       const inputComponent = subject.find(TelInput)
 
       expect(inputComponent.props().value).toBe('54321')
@@ -487,8 +491,8 @@ describe('TelInput', function() {
     })
 
     it('should change value', () => {
-      this.params.defaultValue = ''
-      const subject = this.makeSubject()
+      params.defaultValue = ''
+      const subject = makeSubject()
       const inputComponent = subject.find(TelInput)
 
       inputComponent.simulate('change', { target: { value: '12345' } })
@@ -500,7 +504,7 @@ describe('TelInput', function() {
     })
 
     it('should change props value', () => {
-      const subject = this.makeSubject()
+      const subject = makeSubject()
 
       subject.setState({
         value: '+886912345678',

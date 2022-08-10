@@ -1,5 +1,5 @@
 // eslint-disable-next-line import/prefer-default-export
-export const lookup = callback => {
+export const lookup = (callback) => {
   const request = new XMLHttpRequest()
 
   request.addEventListener('load', () => {

@@ -1,7 +1,7 @@
-import React from 'react'
 import PropTypes from 'prop-types'
+import React from 'react'
 
-const FlagBox = ({
+function FlagBox({
   dialCode,
   isoCode,
   name,
@@ -11,23 +11,25 @@ const FlagBox = ({
   flagRef,
   innerFlagRef,
   countryClass,
-}) => (
-  <li
-    className={countryClass}
-    data-dial-code={dialCode}
-    data-country-code={isoCode}
-    onMouseOver={onMouseOver}
-    onFocus={onFocus}
-    onClick={onClick}
-  >
-    <div ref={flagRef} className="flag-box">
-      <div ref={innerFlagRef} className={`iti-flag ${isoCode}`} />
-    </div>
+}) {
+  return (
+    <li
+      className={countryClass}
+      data-dial-code={dialCode}
+      data-country-code={isoCode}
+      onMouseOver={onMouseOver}
+      onFocus={onFocus}
+      onClick={onClick}
+    >
+      <div ref={flagRef} className="flag-box">
+        <div ref={innerFlagRef} className={`iti-flag ${isoCode}`} />
+      </div>
 
-    <span className="country-name">{name}</span>
-    <span className="dial-code">{`+ ${dialCode}`}</span>
-  </li>
-)
+      <span className="country-name">{name}</span>
+      <span className="dial-code">{`+ ${dialCode}`}</span>
+    </li>
+  )
+}
 
 FlagBox.propTypes = {
   dialCode: PropTypes.string.isRequired,

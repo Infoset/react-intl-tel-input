@@ -1,11 +1,10 @@
-import React, { Component, Fragment } from 'react'
+/* eslint-disable react/jsx-no-useless-fragment */
+/* eslint-disable react/prop-types */
 import PropTypes from 'prop-types'
+import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
-export default class RootModal extends Component {
-  static propTypes = {
-    children: PropTypes.node,
-  }
 
+export default class RootModal extends Component {
   constructor(props) {
     super(props)
 
@@ -22,9 +21,10 @@ export default class RootModal extends Component {
   }
 
   render() {
-    return ReactDOM.createPortal(
-      <Fragment>{this.props.children}</Fragment>,
-      this.modalTarget,
-    )
+    return ReactDOM.createPortal(<>{this.props.children}</>, this.modalTarget)
   }
+}
+
+RootModal.propTypes = {
+  children: PropTypes.node,
 }
