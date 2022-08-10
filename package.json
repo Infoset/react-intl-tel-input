@@ -123,7 +123,6 @@
     "footprint": "yarn build && yarn packwatch",
     "lint:commits": "yarn commitlint --from HEAD --to HEAD --verbose",
     "prepare": "husky install",
-    "postinstall": "husky install",
     "prepack": "pinst --disable",
     "postpack": "pinst --enable"
   },
