@@ -19,9 +19,7 @@ interface UtilsStatic {
 
   getWindow: (elem: any) => Window
 
-  offset: (
-    elem: HTMLElement,
-  ) => {
+  offset: (elem: HTMLElement) => {
     top: number
     left: number
   }

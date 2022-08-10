@@ -1,3 +1,5 @@
+/* eslint-disable react/no-unused-prop-types */
+/* eslint-disable react/no-unused-class-component-methods */
 import React from 'react'
 
 import { CountryData } from '../types'

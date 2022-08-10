@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unused-class-component-methods */
 import React from 'react'
 
 export interface RootModalProps {}

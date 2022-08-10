@@ -1,3 +1,5 @@
+/* eslint-disable react/no-unused-class-component-methods */
+/* eslint-disable react/no-unused-prop-types */
 import React from 'react'
 
 export interface TelInputProps {

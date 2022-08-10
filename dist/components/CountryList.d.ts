@@ -1,3 +1,5 @@
+/* eslint-disable react/no-unused-prop-types */
+/* eslint-disable react/no-unused-class-component-methods */
 import React from 'react'
 
 import { CountryData } from '../types'
@@ -26,12 +28,12 @@ export default class CountryList extends React.Component<
 > {
   listElement?: HTMLUListElement | null
 
-  setDropdownPosition(): void
+  handleMouseOver: (event: React.MouseEvent<HTMLLIElement, MouseEvent>) => void
 
   appendListItem(
     countries: CountryData[],
     isPreferred?: boolean,
   ): React.ReactNode
 
-  handleMouseOver: (event: React.MouseEvent<HTMLLIElement, MouseEvent>) => void
+  setDropdownPosition(): void
 }
