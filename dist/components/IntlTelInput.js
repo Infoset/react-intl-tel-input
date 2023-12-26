@@ -1,85 +1,52 @@
 "use strict";
 
-function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
-
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports["default"] = void 0;
-
 var _react = _interopRequireWildcard(require("react"));
-
 var _classnames = _interopRequireDefault(require("classnames"));
-
 var _underscore = _interopRequireDefault(require("underscore.deferred"));
-
 var _AllCountries = _interopRequireDefault(require("./AllCountries"));
-
 var _FlagDropDown = _interopRequireDefault(require("./FlagDropDown"));
-
 var _TelInput = _interopRequireDefault(require("./TelInput"));
-
 var _utils = _interopRequireDefault(require("./utils"));
-
 var _constants = require("./constants");
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
-
-function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
-
-function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
-
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(e) { return e ? t : r; })(e); }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != _typeof(e) && "function" != typeof e) return { "default": e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n["default"] = e, t && t.set(e, n), n; }
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
-
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
 function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
-
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
+function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : String(i); }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
 var mobileUserAgentRegexp = /Android.+Mobile|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
-
 var IntlTelInput = function (_Component) {
   _inherits(IntlTelInput, _Component);
-
   var _super = _createSuper(IntlTelInput);
-
   function IntlTelInput(_props) {
     var _this;
-
     _classCallCheck(this, IntlTelInput);
-
     _this = _super.call(this, _props);
-
     _defineProperty(_assertThisInitialized(_this), "updateFlagOnDefaultCountryChange", function (countryCode) {
       _this.setFlag(countryCode, false);
     });
-
     _defineProperty(_assertThisInitialized(_this), "getTempCountry", function (countryCode) {
       if (countryCode === 'auto') {
         return 'auto';
       }
-
       var countryData = _utils["default"].getCountryData(_this.countries, countryCode);
-
       if (!countryData.iso2) {
         if (_this.props.preferredCountries.length > 0) {
           countryData = _utils["default"].getCountryData(_this.countries, _this.props.preferredCountries[0]);
@@ -87,54 +54,40 @@ var IntlTelInput = function (_Component) {
           countryData = _AllCountries["default"].getCountries()[0];
         }
       }
-
       return countryData.iso2;
     });
-
     _defineProperty(_assertThisInitialized(_this), "setNumber", function (number, preventFormat) {
       _this.updateFlagFromNumber(number);
-
       _this.updateValFromNumber(number, !preventFormat);
     });
-
     _defineProperty(_assertThisInitialized(_this), "setFlagDropdownRef", function (ref) {
       _this.flagDropDown = ref;
     });
-
     _defineProperty(_assertThisInitialized(_this), "setTelRef", function (ref) {
       _this.tel = ref;
     });
-
     _defineProperty(_assertThisInitialized(_this), "setFlag", function (countryCode, isInit) {
       var prevCountry = _this.selectedCountryData && _this.selectedCountryData.iso2 ? _this.selectedCountryData : {};
       _this.selectedCountryData = countryCode ? _utils["default"].getCountryData(_this.countries, countryCode, false, false, _this.props.noCountryDataHandler) : {};
-
       if (_this.selectedCountryData.iso2) {
         _this.defaultCountry = _this.selectedCountryData.iso2;
       }
-
       var title = countryCode ? "".concat(_this.selectedCountryData.name, ": +").concat(_this.selectedCountryData.dialCode) : 'Unknown';
       var dialCode = _this.state.dialCode;
-
       if (_this.props.separateDialCode) {
         dialCode = _this.selectedCountryData.dialCode ? "+".concat(_this.selectedCountryData.dialCode) : '';
-
         if (prevCountry.dialCode) {
           delete _this.wrapperClass["iti-sdc-".concat(prevCountry.dialCode.length + 1)];
         }
-
         if (dialCode) {
           _this.wrapperClass["iti-sdc-".concat(dialCode.length)] = true;
         }
       }
-
       var selectedIndex = 0;
-
       if (countryCode && countryCode !== 'auto') {
         selectedIndex = _utils["default"].findIndex(_this.preferredCountries, function (country) {
           return country.iso2 === countryCode;
         });
-
         if (selectedIndex === -1) {
           selectedIndex = _utils["default"].findIndex(_this.countries, function (country) {
             return country.iso2 === countryCode;
@@ -143,13 +96,10 @@ var IntlTelInput = function (_Component) {
           selectedIndex += _this.preferredCountries.length;
         }
       }
-
       if (_this.tel && _this.state.showDropdown) {
         _this.tel.focus();
       }
-
       var newNumber = _this.updateDialCode(_this.selectedCountryData.dialCode, !isInit);
-
       _this.setState({
         value: newNumber,
         showDropdown: false,
@@ -159,90 +109,66 @@ var IntlTelInput = function (_Component) {
         dialCode: dialCode
       }, function () {
         _this.updatePlaceholder(_this.props);
-
         _this.wrapperClass.active = false;
-
         if (!isInit && prevCountry.iso2 !== countryCode && typeof _this.props.onSelectFlag === 'function') {
           var currentNumber = _this.state.value;
-
           var fullNumber = _this.formatFullNumber(currentNumber);
-
           var isValid = _this.isValidNumber(fullNumber);
-
           _this.props.onSelectFlag(currentNumber, _this.selectedCountryData, fullNumber, isValid);
         }
       });
     });
-
     _defineProperty(_assertThisInitialized(_this), "getIntlTelInputUtils", function () {
       return _this.props.window.intlTelInputUtils || window.intlTelInputUtils;
     });
-
     _defineProperty(_assertThisInitialized(_this), "getExtension", function (number) {
       var intlTelInputUtils = _this.getIntlTelInputUtils();
-
       if (intlTelInputUtils) {
         return intlTelInputUtils.getExtension(_this.getFullNumber(number), _this.selectedCountryData.iso2);
       }
-
       return '';
     });
-
     _defineProperty(_assertThisInitialized(_this), "getNumber", function (number, format) {
       var intlTelInputUtils = _this.getIntlTelInputUtils();
-
       if (intlTelInputUtils) {
         return intlTelInputUtils.formatNumber(_this.getFullNumber(number), _this.selectedCountryData.iso2, format);
       }
-
       return '';
     });
-
     _defineProperty(_assertThisInitialized(_this), "getFullNumber", function (number) {
       var prefix = _this.props.separateDialCode ? "+".concat(_this.selectedCountryData.dialCode) : '';
       return prefix + number;
     });
-
     _defineProperty(_assertThisInitialized(_this), "getDialCode", function (number) {
       var dialCode = '';
-
       if (number.charAt(0) === '+') {
         var numericChars = '';
-
         for (var i = 0, max = number.length; i < max; i++) {
           var c = number.charAt(i);
-
           if (_utils["default"].isNumeric(c)) {
             numericChars += c;
-
             if (_this.countryCodes[numericChars]) {
               dialCode = number.substr(0, i + 1);
             }
-
             if (numericChars.length === 4) {
               break;
             }
           }
         }
       }
-
       return dialCode;
     });
-
     _defineProperty(_assertThisInitialized(_this), "isUnknownNanp", function (number, dialCode) {
       return dialCode === '+1' && _utils["default"].getNumeric(number).length >= 4;
     });
-
     _defineProperty(_assertThisInitialized(_this), "addCountryCode", function (countryCodes, iso2, dialCode, priority) {
       if (!(dialCode in countryCodes)) {
         countryCodes[dialCode] = [];
       }
-
       var index = priority || 0;
       countryCodes[dialCode][index] = iso2;
       return countryCodes;
     });
-
     _defineProperty(_assertThisInitialized(_this), "processAllCountries", function () {
       if (_this.props.onlyCountries.length) {
         _this.filterCountries(_this.props.onlyCountries, function (inArray) {
@@ -256,15 +182,11 @@ var IntlTelInput = function (_Component) {
         _this.countries = _AllCountries["default"].getCountries();
       }
     });
-
     _defineProperty(_assertThisInitialized(_this), "processCountryCodes", function () {
       _this.countryCodes = {};
-
       for (var i = 0; i < _this.countries.length; i++) {
         var c = _this.countries[i];
-
         _this.addCountryCode(_this.countryCodes, c.iso2, c.dialCode, c.priority);
-
         if (c.areaCodes) {
           for (var j = 0; j < c.areaCodes.length; j++) {
             _this.addCountryCode(_this.countryCodes, c.iso2, c.dialCode + c.areaCodes[j]);
@@ -272,24 +194,18 @@ var IntlTelInput = function (_Component) {
         }
       }
     });
-
     _defineProperty(_assertThisInitialized(_this), "processPreferredCountries", function () {
       _this.preferredCountries = [];
-
       for (var i = 0, max = _this.props.preferredCountries.length; i < max; i++) {
         var countryCode = _this.props.preferredCountries[i].toLowerCase();
-
         var countryData = _utils["default"].getCountryData(_this.countries, countryCode, true);
-
         if (countryData) {
           _this.preferredCountries.push(countryData);
         }
       }
     });
-
     _defineProperty(_assertThisInitialized(_this), "setInitialState", function () {
       var val = _this.props.value || _this.props.defaultValue || '';
-
       if (_this.getDialCode(val)) {
         _this.updateFlagFromNumber(val, true);
       } else if (_this.tempCountry !== 'auto') {
@@ -297,96 +213,76 @@ var IntlTelInput = function (_Component) {
           _this.setFlag(_this.tempCountry, true);
         } else {
           _this.defaultCountry = _this.preferredCountries.length ? _this.preferredCountries[0].iso2 : _this.countries[0].iso2;
-
           if (!val) {
             _this.setFlag(_this.defaultCountry, true);
           }
         }
-
         if (!val && !_this.nationalMode && !_this.autoHideDialCode && !_this.props.separateDialCode) {
           _this.setState({
             value: "+".concat(_this.selectedCountryData.dialCode)
           });
         }
       }
-
       var doNotify = true;
-
       if (val) {
         _this.updateValFromNumber(val, _this.props.formatOnInit, doNotify);
       }
     });
-
     _defineProperty(_assertThisInitialized(_this), "initRequests", function () {
       Promise.resolve().then(function () {
         return _interopRequireWildcard(require('libphonenumber-js-utils'));
       }).then(function () {
         _this.loadUtils();
-
         _this.utilsScriptDeferred.resolve();
       })["catch"](function () {
         return 'An error occurred while loading the component';
       });
-
       if (_this.tempCountry === 'auto') {
         _this.loadAutoCountry();
       } else {
         _this.autoCountryDeferred.resolve();
       }
     });
-
     _defineProperty(_assertThisInitialized(_this), "getStorage", function () {
       return _this.props.window.localStorage || window.localStorage;
     });
-
     _defineProperty(_assertThisInitialized(_this), "loadCountryFromLocalStorage", function () {
       var localStorage = _this.getStorage();
-
       try {
         return localStorage != null ? localStorage.getItem('itiAutoCountry') : '';
       } catch (e) {
         return '';
       }
     });
-
     _defineProperty(_assertThisInitialized(_this), "loadAutoCountry", function () {
       var lsAutoCountry = _this.loadCountryFromLocalStorage();
-
       if (lsAutoCountry) {
         _this.autoCountry = lsAutoCountry;
       }
-
       if (_this.autoCountry) {
         _this.autoCountryLoaded();
       } else if (!_this.startedLoadingAutoCountry) {
         _this.startedLoadingAutoCountry = true;
-
         if (typeof _this.props.geoIpLookup === 'function') {
           _this.props.geoIpLookup(function (countryCode) {
             _this.autoCountry = countryCode.toLowerCase();
-
             if (_this.getStorage() != null) {
               _this.getStorage().setItem('itiAutoCountry', _this.autoCountry);
             }
-
             _this.autoCountryLoaded();
           });
         }
       }
     });
-
     _defineProperty(_assertThisInitialized(_this), "cap", function (number) {
       var max = _this.tel ? _this.tel.getAttribute('maxlength') : number;
       return max && number.length > max ? number.substr(0, max) : number;
     });
-
     _defineProperty(_assertThisInitialized(_this), "removeEmptyDialCode", function () {
       var value = _this.state.value;
       var startsPlus = value.charAt(0) === '+';
-
       if (startsPlus) {
         var numeric = _utils["default"].getNumeric(value);
-
         if (!numeric || _this.selectedCountryData.dialCode === numeric) {
           _this.setState({
             value: ''
@@ -394,97 +290,71 @@ var IntlTelInput = function (_Component) {
         }
       }
     });
-
     _defineProperty(_assertThisInitialized(_this), "handleUpDownKey", function (key) {
       var current = _this.flagDropDown.querySelectorAll('.highlight')[0];
-
       var prevElement = current ? current.previousElementSibling : undefined;
       var nextElement = current ? current.nextElementSibling : undefined;
       var next = key === _constants.KEYS.UP ? prevElement : nextElement;
-
       if (next) {
         if (next.getAttribute('class').indexOf('divider') > -1) {
           next = key === _constants.KEYS.UP ? next.previousElementSibling : next.nextElementSibling;
         }
-
         _this.scrollTo(next);
-
         var selectedIndex = _utils["default"].retrieveLiIndex(next);
-
         _this.setState({
           showDropdown: true,
           highlightedCountry: selectedIndex
         });
       }
     });
-
     _defineProperty(_assertThisInitialized(_this), "handleEnterKey", function () {
       var current = _this.flagDropDown.querySelectorAll('.highlight')[0];
-
       if (current) {
         var selectedIndex = _utils["default"].retrieveLiIndex(current);
-
         var countryCode = current.getAttribute('data-country-code');
-
         _this.setState({
           showDropdown: false,
           highlightedCountry: selectedIndex,
           countryCode: countryCode
         }, function () {
           _this.setFlag(_this.state.countryCode);
-
           _this.unbindDocumentClick();
         });
       }
     });
-
     _defineProperty(_assertThisInitialized(_this), "searchForCountry", function (query) {
       for (var i = 0, max = _this.countries.length; i < max; i++) {
         if (_utils["default"].startsWith(_this.countries[i].name, query)) {
           var listItem = _this.flagDropDown.querySelector(".country-list [data-country-code=\"".concat(_this.countries[i].iso2, "\"]:not(.preferred)"));
-
           var selectedIndex = _utils["default"].retrieveLiIndex(listItem);
-
           _this.setState({
             showDropdown: true,
             highlightedCountry: selectedIndex
           });
-
           _this.scrollTo(listItem, true);
-
           break;
         }
       }
     });
-
     _defineProperty(_assertThisInitialized(_this), "formatNumber", function (number) {
       var intlTelInputUtils = _this.getIntlTelInputUtils();
-
       if (intlTelInputUtils && _this.selectedCountryData) {
         var format = intlTelInputUtils.numberFormat.INTERNATIONAL;
-
         if (!_this.props.separateDialCode && _this.nationalMode || number.charAt(0) !== '+') {
           format = intlTelInputUtils.numberFormat.NATIONAL;
         }
-
         number = intlTelInputUtils.formatNumber(number, _this.selectedCountryData.iso2, format);
       }
-
       return number;
     });
-
     _defineProperty(_assertThisInitialized(_this), "updateValFromNumber", function (number, doFormat) {
       var doNotify = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
-
       var intlTelInputUtils = _this.getIntlTelInputUtils();
-
       if (doFormat && intlTelInputUtils && _this.selectedCountryData) {
         var format = !_this.props.separateDialCode && (_this.nationalMode || number.charAt(0) !== '+') ? intlTelInputUtils.numberFormat.NATIONAL : intlTelInputUtils.numberFormat.INTERNATIONAL;
         number = intlTelInputUtils.formatNumber(number, _this.selectedCountryData.iso2, format);
       }
-
       number = _this.beforeSetNumber(number);
-
       _this.setState({
         showDropdown: false,
         value: number
@@ -492,29 +362,21 @@ var IntlTelInput = function (_Component) {
         if (doNotify) {
           _this.notifyPhoneNumberChange(number);
         }
-
         _this.unbindDocumentClick();
       });
     });
-
     _defineProperty(_assertThisInitialized(_this), "updateFlagFromNumber", function (number, isInit) {
       if (number && _this.nationalMode && _this.selectedCountryData && _this.selectedCountryData.dialCode === '1' && number.charAt(0) !== '+') {
         if (number.charAt(0) !== '1') {
           number = "1".concat(number);
         }
-
         number = "+".concat(number);
       }
-
       var dialCode = _this.getDialCode(number);
-
       var countryCode = null;
-
       if (dialCode) {
         var countryCodes = _this.countryCodes[_utils["default"].getNumeric(dialCode)];
-
         var alreadySelected = _this.selectedCountryData && countryCodes.indexOf(_this.selectedCountryData.iso2) !== -1;
-
         if (!alreadySelected || _this.isUnknownNanp(number, dialCode)) {
           for (var j = 0; j < countryCodes.length; j++) {
             if (countryCodes[j]) {
@@ -526,83 +388,60 @@ var IntlTelInput = function (_Component) {
       } else if (number.charAt(0) === '+' && _utils["default"].getNumeric(number).length) {
         countryCode = null;
       }
-
       if (countryCode !== null) {
         _this.setFlag(countryCode, isInit);
       }
     });
-
     _defineProperty(_assertThisInitialized(_this), "filterCountries", function (countryArray, processFunc) {
       var i;
-
       for (i = 0; i < countryArray.length; i++) {
         countryArray[i] = countryArray[i].toLowerCase();
       }
-
       _this.countries = [];
-
       for (i = 0; i < _AllCountries["default"].getCountries().length; i++) {
         if (processFunc(countryArray.indexOf(_AllCountries["default"].getCountries()[i].iso2))) {
           _this.countries.push(_AllCountries["default"].getCountries()[i]);
         }
       }
     });
-
     _defineProperty(_assertThisInitialized(_this), "processCountryData", function () {
       _AllCountries["default"].initialize(_this.props.countriesData);
-
       _this.processAllCountries.call(_assertThisInitialized(_this));
-
       _this.processCountryCodes.call(_assertThisInitialized(_this));
-
       _this.processPreferredCountries.call(_assertThisInitialized(_this));
     });
-
     _defineProperty(_assertThisInitialized(_this), "handleOnBlur", function (e) {
       _this.removeEmptyDialCode();
-
       if (typeof _this.props.onPhoneNumberBlur === 'function') {
         var value = _this.state.value;
-
         var fullNumber = _this.formatFullNumber(value);
-
         var isValid = _this.isValidNumber(fullNumber);
-
         _this.props.onPhoneNumberBlur(isValid, value, _this.selectedCountryData, fullNumber, _this.getExtension(value), e);
       }
     });
-
     _defineProperty(_assertThisInitialized(_this), "handleOnFocus", function (e) {
       if (typeof _this.props.onPhoneNumberFocus === 'function') {
         var value = _this.state.value;
-
         var fullNumber = _this.formatFullNumber(value);
-
         var isValid = _this.isValidNumber(fullNumber);
-
         _this.props.onPhoneNumberFocus(isValid, value, _this.selectedCountryData, fullNumber, _this.getExtension(value), e);
       }
     });
-
     _defineProperty(_assertThisInitialized(_this), "bindDocumentClick", function () {
       _this.isOpening = true;
-
       _this.props.document.querySelector('html').addEventListener('click', _this.handleDocumentClick);
     });
-
     _defineProperty(_assertThisInitialized(_this), "unbindDocumentClick", function () {
       _this.props.document.querySelector('html').removeEventListener('click', _this.handleDocumentClick);
     });
-
     _defineProperty(_assertThisInitialized(_this), "clickSelectedFlag", function (e) {
       var _this$props = _this.props,
-          allowDropdown = _this$props.allowDropdown,
-          onFlagClick = _this$props.onFlagClick;
+        allowDropdown = _this$props.allowDropdown,
+        onFlagClick = _this$props.onFlagClick;
       var _this$state = _this.state,
-          showDropdown = _this$state.showDropdown,
-          disabled = _this$state.disabled,
-          readonly = _this$state.readonly;
-
+        showDropdown = _this$state.showDropdown,
+        disabled = _this$state.disabled,
+        readonly = _this$state.readonly;
       if (!showDropdown && !disabled && !readonly && allowDropdown) {
         _this.setState({
           showDropdown: true,
@@ -610,7 +449,6 @@ var IntlTelInput = function (_Component) {
           outerHeight: _utils["default"].getOuterHeight(_this.tel)
         }, function () {
           var highlightItem = _this.flagDropDown.querySelector('.highlight');
-
           if (highlightItem) {
             _this.scrollTo(highlightItem, true);
           }
@@ -618,32 +456,25 @@ var IntlTelInput = function (_Component) {
       } else if (showDropdown) {
         _this.toggleDropdown(false);
       }
-
       if (typeof onFlagClick === 'function') {
         onFlagClick(e);
       }
     });
-
     _defineProperty(_assertThisInitialized(_this), "updatePlaceholder", function () {
       var props = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : _this.props;
-
       var intlTelInputUtils = _this.getIntlTelInputUtils();
-
       if (intlTelInputUtils && props.autoPlaceholder && _this.selectedCountryData) {
         var numberType = intlTelInputUtils.numberType[props.numberType];
         var placeholder = _this.selectedCountryData.iso2 ? intlTelInputUtils.getExampleNumber(_this.selectedCountryData.iso2, _this.nationalMode, numberType) : '';
         placeholder = _this.beforeSetNumber(placeholder, props);
-
         if (typeof props.customPlaceholder === 'function') {
           placeholder = props.customPlaceholder(placeholder, _this.selectedCountryData);
         }
-
         _this.setState({
           placeholder: placeholder
         });
       }
     });
-
     _defineProperty(_assertThisInitialized(_this), "toggleDropdown", function (status) {
       _this.setState({
         showDropdown: !!status
@@ -653,55 +484,40 @@ var IntlTelInput = function (_Component) {
         }
       });
     });
-
     _defineProperty(_assertThisInitialized(_this), "scrollTo", function (element, middle) {
       try {
         var container = _this.flagDropDown.querySelector('.country-list');
-
         var containerHeight = parseFloat(_this.props.window.getComputedStyle(container).getPropertyValue('height'));
-
         var containerTop = _utils["default"].offset(container).top;
-
         var containerBottom = containerTop + containerHeight;
-
         var elementHeight = _utils["default"].getOuterHeight(element);
-
         var elementTop = _utils["default"].offset(element).top;
-
         var elementBottom = elementTop + elementHeight;
         var middleOffset = containerHeight / 2 - elementHeight / 2;
         var newScrollTop = elementTop - containerTop + container.scrollTop;
-
         if (elementTop < containerTop) {
           if (middle) {
             newScrollTop -= middleOffset;
           }
-
           container.scrollTop = newScrollTop;
         } else if (elementBottom > containerBottom) {
           if (middle) {
             newScrollTop += middleOffset;
           }
-
           var heightDifference = containerHeight - elementHeight;
           container.scrollTop = newScrollTop - heightDifference;
         }
       } catch (err) {}
     });
-
     _defineProperty(_assertThisInitialized(_this), "updateDialCode", function (newDialCode, hasSelectedListItem) {
       var currentNumber = _this.state.value;
-
       if (!newDialCode) {
         return currentNumber;
       }
-
       var newNumber = currentNumber;
       newDialCode = "+".concat(newDialCode);
-
       if (currentNumber.charAt(0) === '+') {
         var prevDialCode = _this.getDialCode(currentNumber);
-
         if (prevDialCode) {
           newNumber = currentNumber.replace(prevDialCode, newDialCode);
         } else {
@@ -712,88 +528,63 @@ var IntlTelInput = function (_Component) {
       } else if (hasSelectedListItem || !_this.autoHideDialCode) {
         newNumber = newDialCode;
       }
-
       if (newNumber !== currentNumber) {
         _this.notifyPhoneNumberChange(newNumber);
       }
-
       return newNumber;
     });
-
     _defineProperty(_assertThisInitialized(_this), "generateMarkup", function () {
       _this.wrapperClass['separate-dial-code'] = _this.props.separateDialCode;
-
       if (_this.isMobile && _this.props.useMobileFullscreenDropdown) {
         _this.props.document.querySelector('body').classList.add('iti-mobile');
-
         _this.dropdownContainer = 'body';
-
         _this.props.window.addEventListener('scroll', _this.handleWindowScroll);
       }
     });
-
     _defineProperty(_assertThisInitialized(_this), "handleSelectedFlagKeydown", function (e) {
       if (!_this.state.showDropdown && (e.which === _constants.KEYS.UP || e.which === _constants.KEYS.DOWN || e.which === _constants.KEYS.SPACE || e.which === _constants.KEYS.ENTER)) {
         e.preventDefault();
         e.stopPropagation();
-
         _this.toggleDropdown(true);
       }
-
       if (e.which === _constants.KEYS.TAB) {
         _this.toggleDropdown(false);
       }
     });
-
     _defineProperty(_assertThisInitialized(_this), "isValidNumber", function (number) {
       var val = _utils["default"].trim(number);
-
       var countryCode = _this.nationalMode || _this.props.separateDialCode ? _this.selectedCountryData.iso2 : '';
-
       var intlTelInputUtils = _this.getIntlTelInputUtils();
-
       if (intlTelInputUtils) {
         return intlTelInputUtils.isValidNumber(val, countryCode);
       }
-
       return false;
     });
-
     _defineProperty(_assertThisInitialized(_this), "formatFullNumber", function (number) {
       var intlTelInputUtils = _this.getIntlTelInputUtils();
-
       return intlTelInputUtils ? _this.getNumber(number, intlTelInputUtils.numberFormat.INTERNATIONAL) : number;
     });
-
     _defineProperty(_assertThisInitialized(_this), "notifyPhoneNumberChange", function (newNumber) {
       if (typeof _this.props.onPhoneNumberChange === 'function') {
         var fullNumber = _this.formatFullNumber(newNumber);
-
         var isValid = _this.isValidNumber(fullNumber);
-
         _this.props.onPhoneNumberChange(isValid, newNumber, _this.selectedCountryData, fullNumber, _this.getExtension(newNumber));
       }
     });
-
     _defineProperty(_assertThisInitialized(_this), "beforeSetNumber", function (number) {
       var props = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : _this.props;
-
       if (props.separateDialCode) {
         var dialCode = _this.getDialCode(number);
-
         if (dialCode) {
           if (_this.selectedCountryData.areaCodes !== null) {
             dialCode = "+".concat(_this.selectedCountryData.dialCode);
           }
-
           var start = number[dialCode.length] === ' ' || number[dialCode.length] === '-' ? dialCode.length + 1 : dialCode.length;
           number = number.substr(start);
         }
       }
-
       return _this.cap(number);
     });
-
     _defineProperty(_assertThisInitialized(_this), "handleWindowScroll", function () {
       _this.setState({
         showDropdown: false
@@ -801,11 +592,9 @@ var IntlTelInput = function (_Component) {
         _this.props.window.removeEventListener('scroll', _this.handleWindowScroll);
       });
     });
-
     _defineProperty(_assertThisInitialized(_this), "handleDocumentKeyDown", function (e) {
       var queryTimer;
       e.preventDefault();
-
       if (e.which === _constants.KEYS.UP || e.which === _constants.KEYS.DOWN) {
         _this.handleUpDownKey(e.which);
       } else if (e.which === _constants.KEYS.ENTER) {
@@ -818,35 +607,26 @@ var IntlTelInput = function (_Component) {
         if (queryTimer) {
           clearTimeout(queryTimer);
         }
-
         if (!_this.query) {
           _this.query = '';
         }
-
         _this.query += String.fromCharCode(e.which);
-
         _this.searchForCountry(_this.query);
-
         queryTimer = setTimeout(function () {
           _this.query = '';
         }, 1000);
       }
     });
-
     _defineProperty(_assertThisInitialized(_this), "handleDocumentClick", function (e) {
       var targetClass = e.target.getAttribute('class');
-
       if (!targetClass || targetClass && targetClass.indexOf('country') === -1 && targetClass.indexOf('selected-flag') === -1 && targetClass.indexOf('iti-flag') === -1 && targetClass.indexOf('iti-arrow') === -1) {
         _this.isOpening = false;
       }
-
       if (!_this.isOpening) {
         _this.toggleDropdown(false);
       }
-
       _this.isOpening = false;
     });
-
     _defineProperty(_assertThisInitialized(_this), "handleInputChange", function (e) {
       var cursorPosition = e.target.selectionStart;
       var previousValue = e.target.value;
@@ -855,13 +635,11 @@ var IntlTelInput = function (_Component) {
       var formattedValue = previousValue.length < priorValue.length ? previousValue : _this.formatNumber(e.target.value);
       var value = _this.props.format ? formattedValue : e.target.value;
       cursorPosition = _utils["default"].getCursorPositionAfterFormating(previousStringBeforeCursor, previousValue, value);
-
       if (_this.props.value !== undefined) {
         _this.setState({
           cursorPosition: cursorPosition
         }, function () {
           _this.updateFlagFromNumber(value);
-
           _this.notifyPhoneNumberChange(value);
         });
       } else {
@@ -870,33 +648,27 @@ var IntlTelInput = function (_Component) {
           cursorPosition: cursorPosition
         }, function () {
           _this.updateFlagFromNumber(value);
-
           _this.notifyPhoneNumberChange(value);
         });
       }
     });
-
     _defineProperty(_assertThisInitialized(_this), "changeHighlightCountry", function (showDropdown, selectedIndex) {
       _this.setState({
         showDropdown: showDropdown,
         highlightedCountry: selectedIndex
       });
     });
-
     _defineProperty(_assertThisInitialized(_this), "loadUtils", function () {
       if (_this.getIntlTelInputUtils()) {
         _this.utilsScriptDeferred.resolve();
       }
     });
-
     _defineProperty(_assertThisInitialized(_this), "autoCountryLoaded", function () {
       if (_this.tempCountry === 'auto') {
         _this.tempCountry = _this.autoCountry;
-
         _this.autoCountryDeferred.resolve();
       }
     });
-
     _this.wrapperClass = {};
     _this.autoCountry = '';
     _this.tempCountry = '';
@@ -928,30 +700,24 @@ var IntlTelInput = function (_Component) {
     };
     return _this;
   }
-
   _createClass(IntlTelInput, [{
     key: "componentDidMount",
     value: function componentDidMount() {
       var _this2 = this;
-
       this.autoHideDialCode = this.props.autoHideDialCode;
       this.allowDropdown = this.props.allowDropdown;
       this.nationalMode = this.props.nationalMode;
       this.dropdownContainer = '';
-
       if (this.nationalMode) {
         this.autoHideDialCode = false;
       }
-
       if (this.props.separateDialCode) {
         this.autoHideDialCode = false;
         this.nationalMode = false;
         this.allowDropdown = true;
       }
-
       this.processCountryData.call(this);
       this.tempCountry = this.getTempCountry(this.props.defaultCountry);
-
       if (this.props.document.readyState === 'complete') {
         this.windowLoaded = true;
       } else {
@@ -959,17 +725,14 @@ var IntlTelInput = function (_Component) {
           _this2.windowLoaded = true;
         });
       }
-
       this.generateMarkup();
       this.setInitialState();
       this.initRequests();
       this.deferreds.push(this.autoCountryDeferred.promise());
       this.deferreds.push(this.utilsScriptDeferred.promise());
-
       _underscore["default"].when(this.deferreds).done(function () {
         _this2.setInitialState();
       });
-
       this.props.document.addEventListener('keydown', this.handleDocumentKeyDown);
     }
   }, {
@@ -982,7 +745,6 @@ var IntlTelInput = function (_Component) {
         this.props.document.removeEventListener('keydown', this.handleDocumentKeyDown);
         this.unbindDocumentClick();
       }
-
       return true;
     }
   }, {
@@ -991,15 +753,12 @@ var IntlTelInput = function (_Component) {
       if (this.props.value !== prevProps.value) {
         this.updateFlagFromNumber(this.props.value);
       }
-
       if (typeof this.props.customPlaceholder === 'function' && prevProps.customPlaceholder !== this.props.customPlaceholder) {
         this.updatePlaceholder(this.props);
       }
-
       if (this.props.allowDropdown !== prevProps.allowDropdown) {
         this.allowDropdown = this.props.allowDropdown;
       }
-
       if (this.props.defaultCountry !== prevProps.defaultCountry) {
         this.updateFlagOnDefaultCountryChange(this.props.defaultCountry);
       }
@@ -1015,9 +774,7 @@ var IntlTelInput = function (_Component) {
     key: "render",
     value: function render() {
       var inputClass = this.props.inputClassName;
-
       var wrapperStyle = _objectSpread({}, this.props.style || {});
-
       this.wrapperClass['allow-dropdown'] = this.allowDropdown;
       this.wrapperClass.expanded = this.state.showDropdown;
       var wrapperClass = (0, _classnames["default"])(this.wrapperClass, this.props.containerClassName);
@@ -1069,26 +826,21 @@ var IntlTelInput = function (_Component) {
     key: "getDerivedStateFromProps",
     value: function getDerivedStateFromProps(nextProps, prevState) {
       var newState = null;
-
       if (typeof nextProps.value !== 'undefined' && prevState.value !== nextProps.value) {
         newState = {
           value: nextProps.value
         };
       }
-
       if (prevState.disabled !== nextProps.disabled) {
         newState = {
           disabled: nextProps.disabled
         };
       }
-
       return newState;
     }
   }]);
-
   return IntlTelInput;
 }(_react.Component);
-
 IntlTelInput.defaultProps = {
   containerClassName: 'intl-tel-input',
   inputClassName: '',
@@ -1988,5 +1740,4 @@ IntlTelInput.__docgenInfo = {
     }
   }
 };
-var _default = IntlTelInput;
-exports["default"] = _default;
+var _default = exports["default"] = IntlTelInput;

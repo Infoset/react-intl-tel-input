@@ -4,40 +4,31 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports["default"] = void 0;
-
 var _AllCountries = _interopRequireDefault(require("./AllCountries"));
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-
-function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
-
-var _default = {
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+var _default = exports["default"] = {
   arraysEqual: function arraysEqual(a, b) {
     if (a === b) {
       return true;
     }
-
     if (a === null || b === null) {
       return false;
     }
-
     if (a.length !== b.length) {
       return false;
     }
-
     for (var i = 0; i < a.length; ++i) {
       if (a[i] !== b[i]) {
         return false;
       }
     }
-
     return true;
   },
   shallowEquals: function shallowEquals(a, b) {
     if (a === b) {
       return true;
     }
-
     for (var key in a) {
       if (a[key] !== b[key]) {
         if (Array.isArray(a[key]) && Array.isArray(b[key])) {
@@ -49,22 +40,18 @@ var _default = {
         }
       }
     }
-
     for (var _key in b) {
       if (a.hasOwnProperty(_key) === false) {
         return false;
       }
     }
-
     return true;
   },
   trim: function trim(str) {
     var rtrim = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g;
-
     if (!str) {
       return '';
     }
-
     return str.replace(rtrim, '');
   },
   isNumeric: function isNumeric(obj) {
@@ -74,20 +61,16 @@ var _default = {
     if (!node) {
       return -1;
     }
-
     var children = node.parentNode.childNodes;
     var num = 0;
-
     for (var i = 0, max = children.length; i < max; i++) {
       if (children[i] === node) {
         return num;
       }
-
       if (children[i].nodeType === 1 && children[i].tagName.toLowerCase() === 'li') {
         num += 1;
       }
     }
-
     return -1;
   },
   getNumeric: function getNumeric(s) {
@@ -111,11 +94,9 @@ var _default = {
     };
     var doc = elem && elem.ownerDocument;
     docElem = doc.documentElement;
-
     if (_typeof(elem.getBoundingClientRect) !== (typeof undefined === "undefined" ? "undefined" : _typeof(undefined))) {
       box = elem.getBoundingClientRect();
     }
-
     win = this.getWindow(doc);
     return {
       top: box.top + win.pageYOffset - docElem.clientTop,
@@ -127,21 +108,17 @@ var _default = {
   },
   getCountryData: function getCountryData(countries, countryCode, ignoreOnlyCountriesOption, allowFail, errorHandler) {
     var countryList = ignoreOnlyCountriesOption ? _AllCountries["default"].getCountries() : countries;
-
     for (var i = 0; i < countryList.length; i++) {
       if (countryList[i].iso2 === countryCode) {
         return countryList[i];
       }
     }
-
     if (allowFail) {
       return null;
     }
-
     if (typeof errorHandler === 'function') {
       errorHandler(countryCode);
     }
-
     return {};
   },
   findIndex: function findIndex(items, predicate) {
@@ -158,9 +135,7 @@ var _default = {
     if (prev === next) {
       return prevBeforeCursor.length;
     }
-
     var cursorShift = 0;
-
     if (prev.length > next.length) {
       for (var i = 0, j = 0; i < prevBeforeCursor.length && j < next.length; i += 1) {
         if (prevBeforeCursor[i] !== next[j]) {
@@ -190,8 +165,6 @@ var _default = {
         }
       }
     }
-
     return prevBeforeCursor.length + cursorShift;
   }
 };
-exports["default"] = _default;

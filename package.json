@@ -3,9 +3,6 @@
   "version": "0.0.2",
   "description": "Telephone input component. Rewrite intl-tel-input in React.js.",
   "author": "patw",
-  "workspaces": [
-    "website"
-  ],
   "contributors": [
     {
       "name": "Marc Cataford",
@@ -91,7 +88,6 @@
     "mini-css-extract-plugin": "^2.6.1",
     "optimize-css-assets-webpack-plugin": "^6.0.1",
     "packwatch": "^2.0.0",
-    "pinst": "^3.0.0",
     "prettier": "^2.7.1",
     "prettier-eslint": "^15.0.1",
     "react": "^18.2.0",
@@ -121,10 +117,7 @@
     "test:ts": "tsc --project ./tsconfig.test.json",
     "test:ts-watch": "tsc --watch --project ./tsconfig.test.json",
     "footprint": "yarn build && yarn packwatch",
-    "lint:commits": "yarn commitlint --from HEAD --to HEAD --verbose",
-    "prepare": "husky install",
-    "prepack": "pinst --disable",
-    "postpack": "pinst --enable"
+    "lint:commits": "yarn commitlint --from HEAD --to HEAD --verbose"
   },
   "lint-staged": {
     "*.js": [

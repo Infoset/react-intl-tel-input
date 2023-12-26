@@ -4,7 +4,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.KEYS = void 0;
-var KEYS = {
+var KEYS = exports.KEYS = {
   UP: 38,
   DOWN: 40,
   ENTER: 13,
@@ -15,4 +15,3 @@ var KEYS = {
   SPACE: 32,
   TAB: 9
 };
-exports.KEYS = KEYS;

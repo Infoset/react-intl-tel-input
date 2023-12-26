@@ -4,21 +4,18 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports["default"] = void 0;
-
 var _react = _interopRequireDefault(require("react"));
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-
 function FlagBox(_ref) {
   var dialCode = _ref.dialCode,
-      isoCode = _ref.isoCode,
-      name = _ref.name,
-      onMouseOver = _ref.onMouseOver,
-      onFocus = _ref.onFocus,
-      onClick = _ref.onClick,
-      flagRef = _ref.flagRef,
-      innerFlagRef = _ref.innerFlagRef,
-      countryClass = _ref.countryClass;
+    isoCode = _ref.isoCode,
+    name = _ref.name,
+    onMouseOver = _ref.onMouseOver,
+    onFocus = _ref.onFocus,
+    onClick = _ref.onClick,
+    flagRef = _ref.flagRef,
+    innerFlagRef = _ref.innerFlagRef,
+    countryClass = _ref.countryClass;
   return _react["default"].createElement("li", {
     className: countryClass,
     "data-dial-code": dialCode,
@@ -38,7 +35,6 @@ function FlagBox(_ref) {
     className: "dial-code"
   }, "+ ".concat(dialCode)));
 }
-
 FlagBox.defaultProps = {
   onFocus: function onFocus() {},
   onMouseOver: function onMouseOver() {},
@@ -126,5 +122,4 @@ FlagBox.__docgenInfo = {
     }
   }
 };
-var _default = FlagBox;
-exports["default"] = _default;
+var _default = exports["default"] = FlagBox;
